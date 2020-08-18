@@ -1,6 +1,8 @@
 package com.ruoyi.web.controller.system;
 
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,22 +43,22 @@ public class SysRoomController extends BaseController
     public TableDataInfo list(SysRoom sysRoom)
     {
         startPage();
-        List<SysRoom> list = sysRoomService.selectSysRoomList(sysRoom);
+        List<Map<String,Object>> list = sysRoomService.selectSysRoomList(sysRoom);
         return getDataTable(list);
     }
 
-    /**
-     * 导出房间管理列表
-     */
-    @PreAuthorize("@ss.hasPermi('system:room:export')")
-    @Log(title = "房间管理", businessType = BusinessType.EXPORT)
-    @GetMapping("/export")
-    public AjaxResult export(SysRoom sysRoom)
-    {
-        List<SysRoom> list = sysRoomService.selectSysRoomList(sysRoom);
-        ExcelUtil<SysRoom> util = new ExcelUtil<SysRoom>(SysRoom.class);
-        return util.exportExcel(list, "room");
-    }
+//    /**
+//     * 导出房间管理列表
+//     */
+//    @PreAuthorize("@ss.hasPermi('system:room:export')")
+//    @Log(title = "房间管理", businessType = BusinessType.EXPORT)
+//    @GetMapping("/export")
+//    public AjaxResult export(SysRoom sysRoom)
+//    {
+//        List<Map<String,Object>> list = sysRoomService.selectSysRoomList(sysRoom);
+//        ExcelUtil<SysRoom> util = new ExcelUtil<SysRoom>(SysRoom.class);
+//        return util.exportExcel(list, "room");
+//    }
 
     /**
      * 获取房间管理详细信息

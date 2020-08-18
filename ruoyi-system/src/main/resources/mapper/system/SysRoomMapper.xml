@@ -14,12 +14,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         select id, floor_id, room_num from sys_room
     </sql>
 
-    <select id="selectSysRoomList" parameterType="SysRoom" resultMap="SysRoomResult">
-        <include refid="selectSysRoomVo"/>
-        <where>  
-            <if test="floorId != null "> and floor_id = #{floorId}</if>
-            <if test="roomNum != null  and roomNum != ''"> and room_num = #{roomNum}</if>
-        </where>
+    <select id="selectSysRoomList" parameterType="SysRoom" resultType="java.util.HashMap">
+        select  r.id as id, concat(b.build_num,f.floor_num) as floorId ,r.room_num as roomNum from sys_floor f ,sys_building b ,sys_room r where f.build_id=b.id and f.id=r.floor_id
+            <if test="floorId != null "> and r.floor_id = #{floorId}</if>
+            <if test="roomNum != null  and roomNum != ''"> and r.room_num = #{roomNum}</if>
     </select>
     
     <select id="selectSysRoomById" parameterType="Long" resultMap="SysRoomResult">

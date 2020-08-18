@@ -14,19 +14,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         select id, build_id, floor_num from sys_floor
     </sql>
 
-    <select id="selectSysFloorList" parameterType="SysFloor" resultMap="SysFloorResult">
-        <include refid="selectSysFloorVo"/>
-        <where>  
-            <if test="buildId != null "> and build_id = #{buildId}</if>
-            <if test="floorNum != null  and floorNum != ''"> and floor_num = #{floorNum}</if>
-        </where>
+    <select id="selectSysFloorList" parameterType="SysFloor" resultType="java.util.HashMap">
+        select f.id,b.build_num as buildId ,f.floor_num  as floorNum from sys_floor f ,sys_building b where f.build_id=b.id
+            <if test="buildId != null "> and f.build_id = #{buildId}</if>
+            <if test="floorNum != null  and floorNum != ''"> and f.floor_num = #{floorNum}</if>
     </select>
     
     <select id="selectSysFloorById" parameterType="Long" resultMap="SysFloorResult">
         <include refid="selectSysFloorVo"/>
         where id = #{id}
     </select>
-        
+
+    <select id="selectSysFloor"  resultType="java.util.HashMap">
+       select  f.id as id, concat(b.build_num,f.floor_num) as floorNum from sys_floor f ,sys_building b  where f.build_id=b.id
+    </select>
+
     <insert id="insertSysFloor" parameterType="SysFloor" useGeneratedKeys="true" keyProperty="id">
         insert into sys_floor
         <trim prefix="(" suffix=")" suffixOverrides=",">

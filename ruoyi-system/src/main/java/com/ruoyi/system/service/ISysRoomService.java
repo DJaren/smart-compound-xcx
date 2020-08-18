@@ -1,6 +1,8 @@
 package com.ruoyi.system.service;
 
 import java.util.List;
+import java.util.Map;
+
 import com.ruoyi.system.domain.SysRoom;
 
 /**
@@ -25,7 +27,7 @@ public interface ISysRoomService
      * @param sysRoom 房间管理
      * @return 房间管理集合
      */
-    public List<SysRoom> selectSysRoomList(SysRoom sysRoom);
+    public List<Map<String,Object>> selectSysRoomList(SysRoom sysRoom);
 
     /**
      * 新增房间管理

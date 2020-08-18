@@ -1,13 +1,15 @@
 package com.ruoyi.system.service;
 
 import java.util.List;
+import java.util.Map;
+
 import com.ruoyi.system.domain.SysFloor;
 
 /**
  * 楼层信息Service接口
  * 
  * @author ruoyi
- * @date 2020-08-11
+ * @date 2020-08-12
  */
 public interface ISysFloorService 
 {
@@ -19,13 +21,15 @@ public interface ISysFloorService
      */
     public SysFloor selectSysFloorById(Long id);
 
+    public List<Map<String,Object>> selectSysFloor();
+
     /**
      * 查询楼层信息列表
      * 
      * @param sysFloor 楼层信息
      * @return 楼层信息集合
      */
-    public List<SysFloor> selectSysFloorList(SysFloor sysFloor);
+    public List<Map<String,Object>> selectSysFloorList(SysFloor sysFloor);
 
     /**
      * 新增楼层信息

@@ -1,9 +1,15 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="楼层" prop="floorId">
-        <el-select v-model="queryParams.floorId" placeholder="请选择楼层" clearable size="small">
-          <el-option label="请选择字典生成" value="" />
+      <el-form-item label="楼层号" prop="floorId">
+        <el-select v-model="form.floorId" placeholder="请选择楼层号"  clearable size="small">
+          <el-option value="">请选择楼层号</el-option>
+          <el-option
+            v-for="item in buildList"
+            :key="item.id"
+            :label="item.floorNum"
+            :value="item.id">
+          </el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="房间号" prop="roomNum">
@@ -51,15 +57,15 @@
           v-hasPermi="['system:room:remove']"
         >删除</el-button>
       </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="warning"
-          icon="el-icon-download"
-          size="mini"
-          @click="handleExport"
-          v-hasPermi="['system:room:export']"
-        >导出</el-button>
-      </el-col>
+      <!--<el-col :span="1.5">-->
+        <!--<el-button-->
+          <!--type="warning"-->
+          <!--icon="el-icon-download"-->
+          <!--size="mini"-->
+          <!--@click="handleExport"-->
+          <!--v-hasPermi="['system:room:export']"-->
+        <!--&gt;导出</el-button>-->
+      <!--</el-col>-->
 	  <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
@@ -99,9 +105,15 @@
     <!-- 添加或修改房间管理对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="楼层">
-          <el-select v-model="form.floorId" placeholder="请选择楼层">
-            <el-option label="请选择字典生成" value="" />
+        <el-form-item label="楼层号" prop="floorId">
+          <el-select v-model="form.floorId" placeholder="请选择楼层号"  size="small">
+           <el-option value="">请选择楼层号</el-option>
+            <el-option
+              v-for="item in buildList"
+              :key="item.id"
+              :label="item.floorNum"
+              :value="item.id">
+            </el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="房间号" prop="roomNum">
@@ -117,7 +129,7 @@
 </template>
 
 <script>
-import { listRoom, getRoom, delRoom, addRoom, updateRoom, exportRoom } from "@/api/system/room";
+import { listRoom,listBuild,listFloor, getRoom, delRoom, addRoom, updateRoom, exportRoom } from "@/api/system/room";
 
 export default {
   name: "Room",
@@ -137,6 +149,7 @@ export default {
       total: 0,
       // 房间管理表格数据
       roomList: [],
+      buildList:[],
       // 弹出层标题
       title: "",
       // 是否显示弹出层
@@ -152,11 +165,18 @@ export default {
       form: {},
       // 表单校验
       rules: {
+        floorId: [
+          { required: true, message: "楼层号不能为空", trigger: "blur" }
+        ],
+        roomNum: [
+          { required: true, message: "房间号不能为空", trigger: "blur" }
+        ]
       }
     };
   },
   created() {
     this.getList();
+    this.getBuildList();
   },
   methods: {
     /** 查询房间管理列表 */
@@ -168,6 +188,14 @@ export default {
         this.loading = false;
       });
     },
+    getBuildList() {
+      this.loading = true;
+      listFloor(this.queryParams).then(response => {
+        this.buildList = response.data;
+        this.loading = false;
+      });
+    },
+
     // 取消按钮
     cancel() {
       this.open = false;
@@ -251,20 +279,21 @@ export default {
           this.getList();
           this.msgSuccess("删除成功");
         }).catch(function() {});
-    },
-    /** 导出按钮操作 */
-    handleExport() {
-      const queryParams = this.queryParams;
-      this.$confirm('是否确认导出所有房间管理数据项?', "警告", {
-          confirmButtonText: "确定",
-          cancelButtonText: "取消",
-          type: "warning"
-        }).then(function() {
-          return exportRoom(queryParams);
-        }).then(response => {
-          this.download(response.msg);
-        }).catch(function() {});
     }
+    // ,
+    // /** 导出按钮操作 */
+    // handleExport() {
+    //   const queryParams = this.queryParams;
+    //   this.$confirm('是否确认导出所有房间管理数据项?', "警告", {
+    //       confirmButtonText: "确定",
+    //       cancelButtonText: "取消",
+    //       type: "warning"
+    //     }).then(function() {
+    //       return exportRoom(queryParams);
+    //     }).then(response => {
+    //       this.download(response.msg);
+    //     }).catch(function() {});
+    // }
   }
 };
 </script>

@@ -3,15 +3,15 @@ package com.ruoyi.system.domain;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.annotation.Excel;
-import com.ruoyi.common.core.domain.TreeEntity;
+import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
  * 楼层信息对象 sys_floor
  * 
  * @author ruoyi
- * @date 2020-08-11
+ * @date 2020-08-12
  */
-public class SysFloor extends TreeEntity
+public class SysFloor extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 

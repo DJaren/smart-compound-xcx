@@ -1,6 +1,8 @@
 package com.ruoyi.web.controller.system;
 
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,12 +20,13 @@ import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.system.domain.SysFloor;
 import com.ruoyi.system.service.ISysFloorService;
 import com.ruoyi.common.utils.poi.ExcelUtil;
+import com.ruoyi.common.core.page.TableDataInfo;
 
 /**
  * 楼层信息Controller
  * 
  * @author ruoyi
- * @date 2020-08-11
+ * @date 2020-08-12
  */
 @RestController
 @RequestMapping("/system/floor")
@@ -37,24 +40,25 @@ public class SysFloorController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('system:floor:list')")
     @GetMapping("/list")
-    public AjaxResult list(SysFloor sysFloor)
+    public TableDataInfo list(SysFloor sysFloor)
     {
-        List<SysFloor> list = sysFloorService.selectSysFloorList(sysFloor);
-        return AjaxResult.success(list);
+        startPage();
+        List<Map<String,Object>> list = sysFloorService.selectSysFloorList(sysFloor);
+        return getDataTable(list);
     }
 
-    /**
-     * 导出楼层信息列表
-     */
-    @PreAuthorize("@ss.hasPermi('system:floor:export')")
-    @Log(title = "楼层信息", businessType = BusinessType.EXPORT)
-    @GetMapping("/export")
-    public AjaxResult export(SysFloor sysFloor)
-    {
-        List<SysFloor> list = sysFloorService.selectSysFloorList(sysFloor);
-        ExcelUtil<SysFloor> util = new ExcelUtil<SysFloor>(SysFloor.class);
-        return util.exportExcel(list, "floor");
-    }
+//    /**
+//     * 导出楼层信息列表
+//     */
+//    @PreAuthorize("@ss.hasPermi('system:floor:export')")
+//    @Log(title = "楼层信息", businessType = BusinessType.EXPORT)
+//    @GetMapping("/export")
+//    public AjaxResult export(SysFloor sysFloor)
+//    {
+//        List<Map<String,Object>> list = sysFloorService.selectSysFloorList(sysFloor);
+//        ExcelUtil<SysFloor> util = new ExcelUtil<SysFloor>(SysFloor.class);
+//        return util.exportExcel(list, "floor");
+//    }
 
     /**
      * 获取楼层信息详细信息
@@ -66,6 +70,11 @@ public class SysFloorController extends BaseController
         return AjaxResult.success(sysFloorService.selectSysFloorById(id));
     }
 
+    @GetMapping(value = "")
+    public AjaxResult getFloors()
+    {
+        return AjaxResult.success(sysFloorService.selectSysFloor());
+    }
     /**
      * 新增楼层信息
      */

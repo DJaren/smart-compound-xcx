@@ -21,7 +21,7 @@ public interface ISysBuildingService
 
     /**
      * 查询楼栋信息列表
-     * 
+     *
      * @param sysBuilding 楼栋信息
      * @return 楼栋信息集合
      */

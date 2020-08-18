@@ -1,6 +1,8 @@
 package com.ruoyi.system.service.impl;
 
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.system.mapper.SysFloorMapper;
@@ -11,7 +13,7 @@ import com.ruoyi.system.service.ISysFloorService;
  * 楼层信息Service业务层处理
  * 
  * @author ruoyi
- * @date 2020-08-11
+ * @date 2020-08-12
  */
 @Service
 public class SysFloorServiceImpl implements ISysFloorService 
@@ -31,6 +33,11 @@ public class SysFloorServiceImpl implements ISysFloorService
         return sysFloorMapper.selectSysFloorById(id);
     }
 
+    @Override
+    public List<Map<String,Object>> selectSysFloor() {
+        return sysFloorMapper.selectSysFloor();
+    }
+
     /**
      * 查询楼层信息列表
      * 
@@ -38,7 +45,7 @@ public class SysFloorServiceImpl implements ISysFloorService
      * @return 楼层信息
      */
     @Override
-    public List<SysFloor> selectSysFloorList(SysFloor sysFloor)
+    public List<Map<String,Object>> selectSysFloorList(SysFloor sysFloor)
     {
         return sysFloorMapper.selectSysFloorList(sysFloor);
     }

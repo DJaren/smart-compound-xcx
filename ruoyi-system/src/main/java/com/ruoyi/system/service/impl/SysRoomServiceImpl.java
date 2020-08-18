@@ -1,6 +1,8 @@
 package com.ruoyi.system.service.impl;
 
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.system.mapper.SysRoomMapper;
@@ -38,7 +40,7 @@ public class SysRoomServiceImpl implements ISysRoomService
      * @return 房间管理
      */
     @Override
-    public List<SysRoom> selectSysRoomList(SysRoom sysRoom)
+    public List<Map<String,Object>> selectSysRoomList(SysRoom sysRoom)
     {
         return sysRoomMapper.selectSysRoomList(sysRoom);
     }
