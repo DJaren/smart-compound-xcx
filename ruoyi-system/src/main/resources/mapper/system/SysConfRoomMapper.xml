@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysConfRoomMapper">
+    
+    <resultMap type="SysConfRoom" id="SysConfRoomResult">
+        <result property="id"    column="id"    />
+        <result property="roomid"    column="roomId"    />
+        <result property="name"    column="name"    />
+    </resultMap>
+
+    <sql id="selectSysConfRoomVo">
+        select id, roomId, name from sys_conf_room
+    </sql>
+
+    <select id="selectSysConfRoomList" parameterType="SysConfRoom" resultMap="SysConfRoomResult">
+        <include refid="selectSysConfRoomVo"/>
+        <where>  
+            <if test="roomid != null "> and roomId = #{roomid}</if>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectSysConfRoomById" parameterType="Long" resultMap="SysConfRoomResult">
+        <include refid="selectSysConfRoomVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSysConfRoom" parameterType="SysConfRoom">
+        insert into sys_conf_room
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="roomid != null">roomId,</if>
+            <if test="name != null">name,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="roomid != null">#{roomid},</if>
+            <if test="name != null">#{name},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysConfRoom" parameterType="SysConfRoom">
+        update sys_conf_room
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="roomid != null">roomId = #{roomid},</if>
+            <if test="name != null">name = #{name},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSysConfRoomById" parameterType="Long">
+        delete from sys_conf_room where id = #{id}
+    </delete>
+
+    <delete id="deleteSysConfRoomByIds" parameterType="String">
+        delete from sys_conf_room where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

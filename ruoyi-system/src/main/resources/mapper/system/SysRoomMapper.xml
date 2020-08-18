@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysRoomMapper">
+    
+    <resultMap type="SysRoom" id="SysRoomResult">
+        <result property="id"    column="id"    />
+        <result property="floorId"    column="floor_id"    />
+        <result property="roomNum"    column="room_num"    />
+    </resultMap>
+
+    <sql id="selectSysRoomVo">
+        select id, floor_id, room_num from sys_room
+    </sql>
+
+    <select id="selectSysRoomList" parameterType="SysRoom" resultMap="SysRoomResult">
+        <include refid="selectSysRoomVo"/>
+        <where>  
+            <if test="floorId != null "> and floor_id = #{floorId}</if>
+            <if test="roomNum != null  and roomNum != ''"> and room_num = #{roomNum}</if>
+        </where>
+    </select>
+    
+    <select id="selectSysRoomById" parameterType="Long" resultMap="SysRoomResult">
+        <include refid="selectSysRoomVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSysRoom" parameterType="SysRoom" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_room
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="floorId != null">floor_id,</if>
+            <if test="roomNum != null">room_num,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="floorId != null">#{floorId},</if>
+            <if test="roomNum != null">#{roomNum},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysRoom" parameterType="SysRoom">
+        update sys_room
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="floorId != null">floor_id = #{floorId},</if>
+            <if test="roomNum != null">room_num = #{roomNum},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSysRoomById" parameterType="Long">
+        delete from sys_room where id = #{id}
+    </delete>
+
+    <delete id="deleteSysRoomByIds" parameterType="String">
+        delete from sys_room where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>
