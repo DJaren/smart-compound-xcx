@@ -5,11 +5,10 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.annotation.Excel;
 import com.ruoyi.common.core.domain.BaseEntity;
 
+import java.util.List;
+
 /**
  * 楼栋信息对象 sys_building
- * 
- * @author ruoyi
- * @date 2020-08-11
  */
 public class SysBuilding extends BaseEntity
 {
@@ -22,23 +21,33 @@ public class SysBuilding extends BaseEntity
     @Excel(name = "楼号")
     private String buildNum;
 
-    public void setId(Long id) 
+    private List<SysFloor> sysFloorList;
+
+    public void setId(Long id)
     {
         this.id = id;
     }
 
-    public Long getId() 
+    public Long getId()
     {
         return id;
     }
-    public void setBuildNum(String buildNum) 
+    public void setBuildNum(String buildNum)
     {
         this.buildNum = buildNum;
     }
 
-    public String getBuildNum() 
+    public String getBuildNum()
     {
         return buildNum;
+    }
+
+    public List<SysFloor> getSysFloorList() {
+        return sysFloorList;
+    }
+
+    public void setSysFloorList(List<SysFloor> sysFloorList) {
+        this.sysFloorList = sysFloorList;
     }
 
     @Override

@@ -8,7 +8,7 @@ import com.ruoyi.common.core.controller.BaseController;
 
 /**
  * swagger 接口
- * 
+ *
  * @author ruoyi
  */
 @Controller
@@ -21,4 +21,5 @@ public class SwaggerController extends BaseController
     {
         return redirect("/swagger-ui.html");
     }
+
 }

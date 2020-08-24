@@ -5,9 +5,11 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.annotation.Excel;
 import com.ruoyi.common.core.domain.BaseEntity;
 
+import java.util.List;
+
 /**
  * 楼层信息对象 sys_floor
- * 
+ *
  * @author ruoyi
  * @date 2020-08-12
  */
@@ -26,30 +28,35 @@ public class SysFloor extends BaseEntity
     @Excel(name = "楼层号")
     private String floorNum;
 
-    public void setId(Long id) 
+    private List<SysRoom> sysRoomList;
+
+    public List<SysRoom> getSysRoomList() {
+        return sysRoomList;
+    }
+    public void setSysRoomList(List<SysRoom> sysRoomList) {
+        this.sysRoomList = sysRoomList;
+    }
+    public void setId(Long id)
     {
         this.id = id;
     }
-
-    public Long getId() 
+    public Long getId()
     {
         return id;
     }
-    public void setBuildId(Long buildId) 
+    public void setBuildId(Long buildId)
     {
         this.buildId = buildId;
     }
-
-    public Long getBuildId() 
+    public Long getBuildId()
     {
         return buildId;
     }
-    public void setFloorNum(String floorNum) 
+    public void setFloorNum(String floorNum)
     {
         this.floorNum = floorNum;
     }
-
-    public String getFloorNum() 
+    public String getFloorNum()
     {
         return floorNum;
     }

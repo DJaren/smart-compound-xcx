@@ -1,9 +1,7 @@
 package com.ruoyi.web.controller.tool;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +20,7 @@ import io.swagger.annotations.ApiOperation;
 
 /**
  * swagger 用户测试方法
- * 
+ *
  * @author ruoyi
  */
 @Api("用户信息管理")
@@ -35,6 +33,7 @@ public class TestController extends BaseController
         users.put(1, new UserEntity(1, "admin", "admin123", "15888888888"));
         users.put(2, new UserEntity(2, "ry", "admin123", "15666666666"));
     }
+
 
     @ApiOperation("获取用户列表")
     @GetMapping("/list")
@@ -173,3 +172,4 @@ class UserEntity
         this.mobile = mobile;
     }
 }
+
