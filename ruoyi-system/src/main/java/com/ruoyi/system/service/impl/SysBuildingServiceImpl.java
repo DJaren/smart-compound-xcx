@@ -31,6 +31,11 @@ public class SysBuildingServiceImpl implements ISysBuildingService
         return sysBuildingMapper.selectSysBuildingById(id);
     }
 
+    @Override
+    public List<SysBuilding> selectSysBuildingAllDate(SysBuilding sysBuilding) {
+        return sysBuildingMapper.selectSysBuildingAllDate(sysBuilding);
+    }
+
     /**
      * 查询楼栋信息列表
      * 

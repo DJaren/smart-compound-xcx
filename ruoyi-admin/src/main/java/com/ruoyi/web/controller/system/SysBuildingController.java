@@ -52,9 +52,20 @@ public class SysBuildingController extends BaseController
     @GetMapping("")
     public AjaxResult buildings(SysBuilding sysBuilding)
     {
-        List<SysBuilding> list = sysBuildingService.selectSysBuildingList(sysBuilding);
+        List<SysBuilding> list = sysBuildingService.selectSysBuildingAllDate(sysBuilding);
         return AjaxResult.success(list);
     }
+
+
+//    /**
+//     * 查询楼栋信息列表
+//     */
+//    @GetMapping("/buildList")
+//    public AjaxResult buildings()
+//    {
+//        List<SysBuilding> list = sysBuildingService.selectSysBuildingAllDate();
+//        return AjaxResult.success(list);
+//    }
 
     /**
      * 导出楼栋信息列表

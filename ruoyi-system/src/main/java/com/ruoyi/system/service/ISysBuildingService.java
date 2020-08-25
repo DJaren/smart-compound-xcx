@@ -20,6 +20,12 @@ public interface ISysBuildingService
     public SysBuilding selectSysBuildingById(Long id);
 
     /**
+     * 查询出楼栋所有信息（包含下级）
+     * @return
+     */
+    public List<SysBuilding>selectSysBuildingAllDate(SysBuilding sysBuilding);
+
+    /**
      * 查询楼栋信息列表
      *
      * @param sysBuilding 楼栋信息

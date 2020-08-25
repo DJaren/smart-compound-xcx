@@ -5,12 +5,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.ruoyi.system.mapper.SysBuildingMapper">
     
     <resultMap type="SysBuilding" id="SysBuildingResult">
-        <result property="id"    column="id"    />
-        <result property="buildNum"    column="build_num"    />
+        <result property="id"    column="bid"    />
+        <result property="buildNum"    column="build_num"/>
+        <collection property="sysFloorList" ofType="com.ruoyi.system.domain.SysFloor">
+        <id column="fid" property="id"/>
+        <result column="floor_num" property="floorNum"/>
+            <collection property="sysRoomList" ofType="com.ruoyi.system.domain.SysRoom">
+                <id column="rid" property="id"/>
+                <result column="room_num" property="roomNum"/>
+            </collection>
+        </collection>
     </resultMap>
 
     <sql id="selectSysBuildingVo">
-        select id, build_num from sys_building
+        select id bid, build_num from sys_building
     </sql>
 
     <select id="selectSysBuildingList" parameterType="SysBuilding" resultMap="SysBuildingResult">
@@ -53,5 +61,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             #{id}
         </foreach>
     </delete>
-    
+
+
+    <select id="selectSysBuildingAllDate" parameterType="SysBuilding" resultMap="SysBuildingResult">
+     SELECT
+	b.id bid,
+	b.build_num,
+	f.id fid,
+	f.floor_num,
+	r.id rid,
+	r.room_num
+    FROM
+	sys_building b
+	LEFT JOIN sys_floor f ON b.id = f.build_id
+	LEFT JOIN sys_room r ON f.id = r.floor_id
+    where  1=1 order by b.id
+    </select>
 </mapper>
