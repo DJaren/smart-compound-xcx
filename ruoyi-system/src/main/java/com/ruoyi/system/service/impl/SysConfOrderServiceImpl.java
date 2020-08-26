@@ -2,17 +2,17 @@ package com.ruoyi.system.service.impl;
 
 import java.util.List;
 import com.ruoyi.common.utils.DateUtils;
-import com.ruoyi.system.domain.SysConfOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.system.mapper.SysConfOrderMapper;
+import com.ruoyi.system.domain.SysConfOrder;
 import com.ruoyi.system.service.ISysConfOrderService;
 
 /**
- * 【请填写功能名称】Service业务层处理
+ * 会议室预约Service业务层处理
  *
  * @author ruoyi
- * @date 2020-08-19
+ * @date 2020-08-25
  */
 @Service
 public class SysConfOrderServiceImpl implements ISysConfOrderService
@@ -21,10 +21,10 @@ public class SysConfOrderServiceImpl implements ISysConfOrderService
     private SysConfOrderMapper sysConfOrderMapper;
 
     /**
-     * 查询【请填写功能名称】
+     * 查询会议室预约
      *
-     * @param confOrderId 【请填写功能名称】ID
-     * @return 【请填写功能名称】
+     * @param confOrderId 会议室预约ID
+     * @return 会议室预约
      */
     @Override
     public SysConfOrder selectSysConfOrderById(Long confOrderId)
@@ -32,28 +32,34 @@ public class SysConfOrderServiceImpl implements ISysConfOrderService
         return sysConfOrderMapper.selectSysConfOrderById(confOrderId);
     }
 
+    /**
+     * 查询会议室预约列表
+     *
+     * @param sysConfOrder 会议室预约
+     * @return 会议室预约
+     */
     @Override
-    public List<SysConfOrder> selectSysConfOrderList(SysConfOrder sysConfOrder) {
-        return null;
+    public List<SysConfOrder> selectSysConfOrderList(SysConfOrder sysConfOrder)
+    {
+        return sysConfOrderMapper.selectSysConfOrderList(sysConfOrder);
     }
 
     /**
-     * 新增【请填写功能名称】
+     * 新增会议室预约
      *
-     * @param sysConfOrder 【请填写功能名称】
+     * @param sysConfOrder 会议室预约
      * @return 结果
      */
     @Override
     public int insertSysConfOrder(SysConfOrder sysConfOrder)
     {
-        sysConfOrder.setCreateTime(DateUtils.getNowDate());
         return sysConfOrderMapper.insertSysConfOrder(sysConfOrder);
     }
 
     /**
-     * 修改【请填写功能名称】
+     * 修改会议室预约
      *
-     * @param sysConfOrder 【请填写功能名称】
+     * @param sysConfOrder 会议室预约
      * @return 结果
      */
     @Override
@@ -63,9 +69,9 @@ public class SysConfOrderServiceImpl implements ISysConfOrderService
     }
 
     /**
-     * 批量删除【请填写功能名称】
+     * 批量删除会议室预约
      *
-     * @param confOrderIds 需要删除的【请填写功能名称】ID
+     * @param confOrderIds 需要删除的会议室预约ID
      * @return 结果
      */
     @Override
@@ -75,9 +81,9 @@ public class SysConfOrderServiceImpl implements ISysConfOrderService
     }
 
     /**
-     * 删除【请填写功能名称】信息
+     * 删除会议室预约信息
      *
-     * @param confOrderId 【请填写功能名称】ID
+     * @param confOrderId 会议室预约ID
      * @return 结果
      */
     @Override

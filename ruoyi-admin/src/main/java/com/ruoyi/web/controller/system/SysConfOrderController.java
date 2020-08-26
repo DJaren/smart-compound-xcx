@@ -1,9 +1,6 @@
 package com.ruoyi.web.controller.system;
 
 import java.util.List;
-
-import com.ruoyi.system.domain.SysConfOrder;
-import io.swagger.annotations.Api;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,17 +15,17 @@ import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.enums.BusinessType;
+import com.ruoyi.system.domain.SysConfOrder;
 import com.ruoyi.system.service.ISysConfOrderService;
 import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.common.core.page.TableDataInfo;
 
 /**
- * 【请填写功能名称】Controller
- *
+ * 会议室预约Controller
+ * 
  * @author ruoyi
- * @date 2020-08-19
+ * @date 2020-08-25
  */
-@Api("测试会议预约")
 @RestController
 @RequestMapping("/system/order")
 public class SysConfOrderController extends BaseController
@@ -36,12 +33,8 @@ public class SysConfOrderController extends BaseController
     @Autowired
     private ISysConfOrderService sysConfOrderService;
 
-
-
-
-
     /**
-     * 查询列表
+     * 查询会议室预约列表
      */
     @PreAuthorize("@ss.hasPermi('system:order:list')")
     @GetMapping("/list")
@@ -53,10 +46,10 @@ public class SysConfOrderController extends BaseController
     }
 
     /**
-     * 导出列表
+     * 导出会议室预约列表
      */
     @PreAuthorize("@ss.hasPermi('system:order:export')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.EXPORT)
+    @Log(title = "会议室预约", businessType = BusinessType.EXPORT)
     @GetMapping("/export")
     public AjaxResult export(SysConfOrder sysConfOrder)
     {
@@ -66,7 +59,7 @@ public class SysConfOrderController extends BaseController
     }
 
     /**
-     * 获取详细信息
+     * 获取会议室预约详细信息
      */
     @PreAuthorize("@ss.hasPermi('system:order:query')")
     @GetMapping(value = "/{confOrderId}")
@@ -76,10 +69,10 @@ public class SysConfOrderController extends BaseController
     }
 
     /**
-     * 新增
+     * 新增会议室预约
      */
     @PreAuthorize("@ss.hasPermi('system:order:add')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.INSERT)
+    @Log(title = "会议室预约", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody SysConfOrder sysConfOrder)
     {
@@ -87,10 +80,10 @@ public class SysConfOrderController extends BaseController
     }
 
     /**
-     * 修改
+     * 修改会议室预约
      */
     @PreAuthorize("@ss.hasPermi('system:order:edit')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.UPDATE)
+    @Log(title = "会议室预约", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody SysConfOrder sysConfOrder)
     {
@@ -98,10 +91,10 @@ public class SysConfOrderController extends BaseController
     }
 
     /**
-     * 删除
+     * 删除会议室预约
      */
     @PreAuthorize("@ss.hasPermi('system:order:remove')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.DELETE)
+    @Log(title = "会议室预约", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{confOrderIds}")
     public AjaxResult remove(@PathVariable Long[] confOrderIds)
     {

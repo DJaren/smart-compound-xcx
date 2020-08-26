@@ -1,60 +1,59 @@
 package com.ruoyi.system.mapper;
 
+import java.util.List;
 import com.ruoyi.system.domain.SysConfOrder;
 
-import java.util.List;
-
 /**
- * 【请填写功能名称】Mapper接口
- *
+ * 会议室预约Mapper接口
+ * 
  * @author ruoyi
- * @date 2020-08-19
+ * @date 2020-08-25
  */
-public interface SysConfOrderMapper
+public interface SysConfOrderMapper 
 {
     /**
-     * 查询【请填写功能名称】
-     *
-     * @param confOrderId 【请填写功能名称】ID
-     * @return 【请填写功能名称】
+     * 查询会议室预约
+     * 
+     * @param confOrderId 会议室预约ID
+     * @return 会议室预约
      */
     public SysConfOrder selectSysConfOrderById(Long confOrderId);
 
     /**
-     * 查询【请填写功能名称】列表
-     *
-     * @param sysConfOrder 【请填写功能名称】
-     * @return 【请填写功能名称】集合
+     * 查询会议室预约列表
+     * 
+     * @param sysConfOrder 会议室预约
+     * @return 会议室预约集合
      */
     public List<SysConfOrder> selectSysConfOrderList(SysConfOrder sysConfOrder);
 
     /**
-     * 新增【请填写功能名称】
-     *
-     * @param sysConfOrder 【请填写功能名称】
+     * 新增会议室预约
+     * 
+     * @param sysConfOrder 会议室预约
      * @return 结果
      */
     public int insertSysConfOrder(SysConfOrder sysConfOrder);
 
     /**
-     * 修改【请填写功能名称】
-     *
-     * @param sysConfOrder 【请填写功能名称】
+     * 修改会议室预约
+     * 
+     * @param sysConfOrder 会议室预约
      * @return 结果
      */
     public int updateSysConfOrder(SysConfOrder sysConfOrder);
 
     /**
-     * 删除【请填写功能名称】
-     *
-     * @param confOrderId 【请填写功能名称】ID
+     * 删除会议室预约
+     * 
+     * @param confOrderId 会议室预约ID
      * @return 结果
      */
     public int deleteSysConfOrderById(Long confOrderId);
 
     /**
-     * 批量删除【请填写功能名称】
-     *
+     * 批量删除会议室预约
+     * 
      * @param confOrderIds 需要删除的数据ID
      * @return 结果
      */

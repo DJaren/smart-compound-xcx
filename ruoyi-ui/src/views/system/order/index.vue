@@ -1,21 +1,13 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="预约人" prop="userId">
-        <el-input
-          v-model="queryParams.userId"
-          placeholder="请输入预约人"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
+
 
       <el-form-item label="预约开始时间" prop="startTime">
         <el-date-picker clearable size="small" style="width: 200px"
           v-model="queryParams.startTime"
           type="date"
-          value-format="yyyy-MM-dd"
+          value-format="yyyy-MM-dd hh:mm"
           placeholder="选择预约开始时间">
         </el-date-picker>
       </el-form-item>
@@ -23,22 +15,15 @@
         <el-date-picker clearable size="small" style="width: 200px"
           v-model="queryParams.endTime"
           type="date"
-          value-format="yyyy-MM-dd"
+          value-format="yyyy-MM-dd hh:mm"
           placeholder="选择预约结束时间">
         </el-date-picker>
       </el-form-item>
-      <el-form-item label="会议主题" prop="confTitle">
-        <el-input
-          v-model="queryParams.confTitle"
-          placeholder="请输入会议主题"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
+
       <el-form-item label="会议室状态" prop="status">
         <el-select v-model="queryParams.status" placeholder="请选择会议室状态" clearable size="small">
-          <el-option label="请选择字典生成" value="" />
+          <el-option label="预约" value="0" />
+          <el-option label="关闭" value="0" />
         </el-select>
       </el-form-item>
       <el-form-item>
@@ -96,12 +81,12 @@
       <el-table-column label="会议室" align="center" prop="confId" />
       <el-table-column label="预约开始时间" align="center" prop="startTime" width="180">
         <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.startTime, '{y}-{m}-{d}') }}</span>
+          <span>{{ parseTime(scope.row.startTime, '{y}-{m}-{d} {h}:{m}') }}</span>
         </template>
       </el-table-column>
       <el-table-column label="预约结束时间" align="center" prop="endTime" width="180">
         <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.endTime, '{y}-{m}-{d}') }}</span>
+          <span>{{ parseTime(scope.row.endTime, '{y}-{m}-{d} {h}:{m}') }}</span>
         </template>
       </el-table-column>
       <el-table-column label="会议主题" align="center" prop="confTitle" />
@@ -147,7 +132,7 @@
           <el-date-picker clearable size="small" style="width: 200px"
             v-model="form.startTime"
             type="date"
-            value-format="yyyy-MM-dd"
+            value-format="yyyy-MM-dd hh-mm"
             placeholder="选择预约开始时间">
           </el-date-picker>
         </el-form-item>
@@ -155,7 +140,7 @@
           <el-date-picker clearable size="small" style="width: 200px"
             v-model="form.endTime"
             type="date"
-            value-format="yyyy-MM-dd"
+            value-format="yyyy-MM-dd hh-mm"
             placeholder="选择预约结束时间">
           </el-date-picker>
         </el-form-item>
@@ -164,7 +149,8 @@
         </el-form-item>
         <el-form-item label="会议室状态">
           <el-radio-group v-model="form.status">
-            <el-radio label="1">请选择字典生成</el-radio>
+            <el-option label="预约" value="0" />
+            <el-option label="关闭" value="0" />
           </el-radio-group>
         </el-form-item>
       </el-form>
