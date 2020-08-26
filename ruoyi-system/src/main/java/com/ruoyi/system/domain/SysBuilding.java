@@ -32,6 +32,7 @@ public class SysBuilding extends BaseEntity
     {
         return id;
     }
+
     public void setBuildNum(String buildNum)
     {
         this.buildNum = buildNum;

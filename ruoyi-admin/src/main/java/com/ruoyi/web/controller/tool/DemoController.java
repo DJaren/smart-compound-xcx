@@ -1,10 +1,22 @@
 package com.ruoyi.web.controller.tool;
 
 import com.ruoyi.common.core.domain.AjaxResult;
+import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.system.domain.SysBuilding;
+import com.ruoyi.system.service.ISysBuildingService;
+import com.ruoyi.system.service.ISysConfigService;
 import io.swagger.annotations.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
+import com.ruoyi.common.annotation.Log;
+import com.ruoyi.common.core.controller.BaseController;
+import com.ruoyi.common.core.domain.AjaxResult;
+import com.ruoyi.common.enums.BusinessType;
+import com.ruoyi.common.utils.poi.ExcelUtil;
+import com.ruoyi.common.core.page.TableDataInfo;
 
 /**
  * swagger 会议室预约测试
@@ -53,10 +65,6 @@ public class DemoController {
         return AjaxResult.success(bfrList);
     }
 
-//    {
-//        confList.put(1,new Building<1,new Floor<1,new ConfEntity()>>);
-
-//    }
 
 //    @ApiOperation("获取会议室预约信息详细")
 //    @ApiImplicitParam(name = "confOrderId",value = "会议预约ID",required = true, dataType = "int", paramType = "path")

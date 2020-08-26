@@ -55,6 +55,8 @@ public class SysLoginController
 //        ajax.put(Constants.TOKEN, token);
 //        return ajax;
 //    }
+
+    //新的登陆方法，去除了验证码和UUID
     @PostMapping("/login")
     public AjaxResult login1(@RequestBody LoginBody loginBody)
     {
