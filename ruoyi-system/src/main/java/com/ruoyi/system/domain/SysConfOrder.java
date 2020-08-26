@@ -13,7 +13,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
  * @author ruoyi
  * @date 2020-08-19
  */
-public class SysConfOrder extends BaseEntity
+public class SysConfOrder
 {
     private static final long serialVersionUID = 1L;
 
@@ -27,6 +27,11 @@ public class SysConfOrder extends BaseEntity
     /** 会议室ID，外键 */
     @Excel(name = "会议室ID，外键")
     private Long confId;
+
+    /** 创建时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd hh-mm")
+    @Excel(name = "创建时间", width = 30, dateFormat = "yyyy-MM-dd hh-mm")
+    private Date createTime;
 
     /** 预约开始时间 */
     @JsonFormat(pattern = "yyyy-MM-dd hh-mm")
@@ -46,81 +51,71 @@ public class SysConfOrder extends BaseEntity
     @Excel(name = "会议室状态")
     private Long status;
 
-    public void setConfOrderId(Long confOrderId)
-    {
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Long getConfOrderId() {
+        return confOrderId;
+    }
+
+    public void setConfOrderId(Long confOrderId) {
         this.confOrderId = confOrderId;
     }
 
-    public Long getConfOrderId()
-    {
-        return confOrderId;
+    public Long getUserId() {
+        return userId;
     }
-    public void setUserId(Long userId)
-    {
+
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
-    public Long getUserId()
-    {
-        return userId;
+    public Long getConfId() {
+        return confId;
     }
-    public void setConfId(Long confId)
-    {
+
+    public void setConfId(Long confId) {
         this.confId = confId;
     }
 
-    public Long getConfId()
-    {
-        return confId;
+    public Date getCreateTime() {
+        return createTime;
     }
-    public void setStartTime(Date startTime)
-    {
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public Date getStartTime()
-    {
-        return startTime;
+    public Date getEndTime() {
+        return endTime;
     }
-    public void setEndTime(Date endTime)
-    {
+
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
-    public String getEndTime()
-    {
-        return String.valueOf(endTime);
+    public String getConfTitle() {
+        return confTitle;
     }
-    public void setConfTitle(String confTitle)
-    {
+
+    public void setConfTitle(String confTitle) {
         this.confTitle = confTitle;
     }
 
-    public String getConfTitle()
-    {
-        return confTitle;
-    }
-    public void setStatus(Long status)
-    {
-        this.status = status;
-    }
-
-    public Long getStatus()
-    {
+    public Long getStatus() {
         return status;
     }
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("confOrderId", getConfOrderId())
-            .append("userId", getUserId())
-            .append("confId", getConfId())
-            .append("createTime", getCreateTime())
-            .append("startTime", getStartTime())
-            .append("endTime", getEndTime())
-            .append("confTitle", getConfTitle())
-            .append("status", getStatus())
-            .toString();
+    public void setStatus(Long status) {
+        this.status = status;
     }
 }
