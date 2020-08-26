@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询【请填写功能名称】列表
+// 查询会议室预约列表
 export function listOrder(query) {
   return request({
     url: '/system/order/list',
@@ -9,7 +9,7 @@ export function listOrder(query) {
   })
 }
 
-// 查询【请填写功能名称】详细
+// 查询会议室预约详细
 export function getOrder(confOrderId) {
   return request({
     url: '/system/order/' + confOrderId,
@@ -17,7 +17,7 @@ export function getOrder(confOrderId) {
   })
 }
 
-// 新增【请填写功能名称】
+// 新增会议室预约
 export function addOrder(data) {
   return request({
     url: '/system/order',
@@ -26,7 +26,7 @@ export function addOrder(data) {
   })
 }
 
-// 修改【请填写功能名称】
+// 修改会议室预约
 export function updateOrder(data) {
   return request({
     url: '/system/order',
@@ -35,7 +35,7 @@ export function updateOrder(data) {
   })
 }
 
-// 删除【请填写功能名称】
+// 删除会议室预约
 export function delOrder(confOrderId) {
   return request({
     url: '/system/order/' + confOrderId,
@@ -43,7 +43,7 @@ export function delOrder(confOrderId) {
   })
 }
 
-// 导出【请填写功能名称】
+// 导出会议室预约
 export function exportOrder(query) {
   return request({
     url: '/system/order/export',

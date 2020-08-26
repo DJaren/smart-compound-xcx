@@ -145,6 +145,7 @@ export default {
   },
   created() {
     this.getList();
+
   },
   methods: {
     /** 查询楼栋信息列表 */
@@ -154,6 +155,7 @@ export default {
         this.buildingList = response.rows;
         this.total = response.total;
         this.loading = false;
+        console.info(response.rows);
       });
     },
     // 取消按钮

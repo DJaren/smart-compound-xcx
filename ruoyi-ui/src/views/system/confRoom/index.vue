@@ -1,9 +1,37 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="房间id" prop="roomid">
-        <el-select v-model="queryParams.roomid" placeholder="请选择房间id" clearable size="small">
+      <el-form-item label="楼栋号" prop="buildId">
+        <el-select v-model="queryParams.buildId" placeholder="请选择楼栋" clearable size="small">
           <el-option label="请选择字典生成" value="" />
+          <el-option
+            v-for="item in buildList"
+            :key="item.id"
+            :label="item.buildNum"
+            :value="item.id">
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="楼层号" prop="floorId">
+        <el-select v-model="queryParams.floorId" placeholder="请选择楼层" clearable size="small">
+          <el-option label="请选择字典生成" value="" />
+          <el-option
+            v-for="item in floorList"
+            :key="item.id"
+            :label="item.floorNum"
+            :value="item.id">
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="房间号" prop="roomid">
+        <el-select v-model="queryParams.roomid" placeholder="请选择房间号" clearable size="small">
+          <el-option label="请选择字典生成" value="" />
+          <el-option
+            v-for="item in roomList"
+            :key="item.id"
+            :label="item.roomNum"
+            :value="item.id">
+          </el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="会议室名称" prop="name">
@@ -66,7 +94,21 @@
     <el-table v-loading="loading" :data="confRoomList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="主键" align="center" prop="id" />
-      <el-table-column label="房间id" align="center" prop="roomid" />
+      <el-form-item label="楼栋号" prop="buildId">
+        <el-select v-model="queryParams.buildId" placeholder="请选择楼栋" clearable size="small">
+          <el-option label="请选择字典生成" value="" />
+        </el-select>
+      </el-form-item>
+      <el-form-item label="楼层号" prop="floorId">
+        <el-select v-model="queryParams.floorId" placeholder="请选择楼层" clearable size="small">
+          <el-option label="请选择字典生成" value="" />
+        </el-select>
+      </el-form-item>
+      <el-form-item label="房间号" prop="roomid">
+        <el-select v-model="queryParams.roomid" placeholder="请选择房间号" clearable size="small">
+          <el-option label="请选择字典生成" value="" />
+        </el-select>
+      </el-form-item>
       <el-table-column label="会议室名称" align="center" prop="name" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -99,8 +141,18 @@
     <!-- 添加或修改会议室对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="房间id">
-          <el-select v-model="form.roomid" placeholder="请选择房间id">
+        <el-form-item label="楼栋号" prop="buildId">
+          <el-select v-model="queryParams.buildId" placeholder="请选择楼栋" clearable size="small">
+            <el-option label="请选择字典生成" value="" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="楼层号" prop="floorId">
+          <el-select v-model="queryParams.floorId" placeholder="请选择楼层" clearable size="small">
+            <el-option label="请选择字典生成" value="" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="房间号" prop="roomid">
+          <el-select v-model="queryParams.roomid" placeholder="请选择房间号" clearable size="small">
             <el-option label="请选择字典生成" value="" />
           </el-select>
         </el-form-item>
@@ -135,6 +187,10 @@ export default {
       showSearch: true,
       // 总条数
       total: 0,
+      buildingList:[],
+      floorList:[],
+      roomList:[],
+
       // 会议室表格数据
       confRoomList: [],
       // 弹出层标题
@@ -145,6 +201,8 @@ export default {
       queryParams: {
         pageNum: 1,
         pageSize: 10,
+        buildId:null,
+        floorId:null,
         roomid: null,
         name: null
       },
