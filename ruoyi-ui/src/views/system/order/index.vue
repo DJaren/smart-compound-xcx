@@ -1,29 +1,21 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="用户ID,外键" prop="userId">
+      <el-form-item label="预约人" prop="userId">
         <el-input
           v-model="queryParams.userId"
-          placeholder="请输入用户ID,外键"
+          placeholder="请输入预约人"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="会议室ID，外键" prop="confId">
-        <el-input
-          v-model="queryParams.confId"
-          placeholder="请输入会议室ID，外键"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
+
       <el-form-item label="预约开始时间" prop="startTime">
         <el-date-picker clearable size="small" style="width: 200px"
           v-model="queryParams.startTime"
-          type="datetime"
-          value-format="yyyy-MM-dd HH:mm:ss"
+          type="date"
+          value-format="yyyy-MM-dd"
           placeholder="选择预约开始时间">
         </el-date-picker>
       </el-form-item>
@@ -46,8 +38,7 @@
       </el-form-item>
       <el-form-item label="会议室状态" prop="status">
         <el-select v-model="queryParams.status" placeholder="请选择会议室状态" clearable size="small">
-          <el-option label="预约" value="1" />
-          <el-option label="关闭" value="2" />
+          <el-option label="请选择字典生成" value="" />
         </el-select>
       </el-form-item>
       <el-form-item>
@@ -100,9 +91,9 @@
 
     <el-table v-loading="loading" :data="orderList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="会议室预约ID" align="center" prop="confOrderId" />
-      <el-table-column label="用户ID,外键" align="center" prop="userId" />
-      <el-table-column label="会议室ID，外键" align="center" prop="confId" />
+      <el-table-column label="预约号" align="center" prop="confOrderId" />
+      <el-table-column label="预约人" align="center" prop="userId" />
+      <el-table-column label="会议室" align="center" prop="confId" />
       <el-table-column label="预约开始时间" align="center" prop="startTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.startTime, '{y}-{m}-{d}') }}</span>
@@ -134,7 +125,7 @@
         </template>
       </el-table-column>
     </el-table>
-
+    
     <pagination
       v-show="total>0"
       :total="total"
@@ -143,11 +134,11 @@
       @pagination="getList"
     />
 
-    <!-- 添加或修改【请填写功能名称】对话框 -->
+    <!-- 添加或修改会议室预约对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="用户ID,外键" prop="userId">
-          <el-input v-model="form.userId" placeholder="请输入用户ID,外键" />
+        <el-form-item label="预约人" prop="userId">
+          <el-input v-model="form.userId" placeholder="请输入预约人" />
         </el-form-item>
         <el-form-item label="会议室ID，外键" prop="confId">
           <el-input v-model="form.confId" placeholder="请输入会议室ID，外键" />
@@ -173,8 +164,7 @@
         </el-form-item>
         <el-form-item label="会议室状态">
           <el-radio-group v-model="form.status">
-            <el-radio label="1">预约</el-radio>
-            <el-radio label="2">关闭</el-radio>
+            <el-radio label="1">请选择字典生成</el-radio>
           </el-radio-group>
         </el-form-item>
       </el-form>
@@ -205,7 +195,7 @@ export default {
       showSearch: true,
       // 总条数
       total: 0,
-      // 【请填写功能名称】表格数据
+      // 会议室预约表格数据
       orderList: [],
       // 弹出层标题
       title: "",
@@ -239,7 +229,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** 查询【请填写功能名称】列表 */
+    /** 查询会议室预约列表 */
     getList() {
       this.loading = true;
       listOrder(this.queryParams).then(response => {
@@ -287,7 +277,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "添加【请填写功能名称】";
+      this.title = "添加会议室预约";
     },
     /** 修改按钮操作 */
     handleUpdate(row) {
@@ -296,7 +286,7 @@ export default {
       getOrder(confOrderId).then(response => {
         this.form = response.data;
         this.open = true;
-        this.title = "修改【请填写功能名称】";
+        this.title = "修改会议室预约";
       });
     },
     /** 提交按钮 */
@@ -326,7 +316,7 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const confOrderIds = row.confOrderId || this.ids;
-      this.$confirm('是否确认删除【请填写功能名称】编号为"' + confOrderIds + '"的数据项?', "警告", {
+      this.$confirm('是否确认删除会议室预约编号为"' + confOrderIds + '"的数据项?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
@@ -340,7 +330,7 @@ export default {
     /** 导出按钮操作 */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$confirm('是否确认导出所有【请填写功能名称】数据项?', "警告", {
+      this.$confirm('是否确认导出所有会议室预约数据项?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"

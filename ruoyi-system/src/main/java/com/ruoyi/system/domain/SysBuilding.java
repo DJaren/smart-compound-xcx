@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * 楼栋信息对象 sys_building
  */
-public class SysBuilding extends BaseEntity
+public class SysBuilding
 {
     private static final long serialVersionUID = 1L;
 
