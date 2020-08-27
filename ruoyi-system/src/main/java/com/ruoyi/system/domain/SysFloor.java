@@ -13,7 +13,7 @@ import java.util.List;
  * @author ruoyi
  * @date 2020-08-12
  */
-public class SysFloor extends BaseEntity
+public class SysFloor
 {
     private static final long serialVersionUID = 1L;
 

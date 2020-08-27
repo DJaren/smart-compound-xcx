@@ -7,11 +7,11 @@ import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
  * 房间管理对象 sys_room
- * 
+ *
  * @author ruoyi
  * @date 2020-08-12
  */
-public class SysRoom extends BaseEntity
+public class SysRoom
 {
     private static final long serialVersionUID = 1L;
 
@@ -26,30 +26,30 @@ public class SysRoom extends BaseEntity
     @Excel(name = "房间号")
     private String roomNum;
 
-    public void setId(Long id) 
+    public void setId(Long id)
     {
         this.id = id;
     }
 
-    public Long getId() 
+    public Long getId()
     {
         return id;
     }
-    public void setFloorId(Long floorId) 
+    public void setFloorId(Long floorId)
     {
         this.floorId = floorId;
     }
 
-    public Long getFloorId() 
+    public Long getFloorId()
     {
         return floorId;
     }
-    public void setRoomNum(String roomNum) 
+    public void setRoomNum(String roomNum)
     {
         this.roomNum = roomNum;
     }
 
-    public String getRoomNum() 
+    public String getRoomNum()
     {
         return roomNum;
     }
