@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.ruoyi.common.core.controller.BaseController;
 import java.util.List;
+import java.util.Map;
 
 @Api("测试会议预约信息demo")
 @RestController
@@ -39,7 +40,7 @@ public class SysDemoController extends BaseController {
     @ApiOperation("获取会议室预约信息列表")
     @GetMapping("/listConfOrder")
     public AjaxResult listConfOrder() {
-        List<SysConfOrder> list = sysConfOrderService.selectSysConfOrderList(null);
+        List<Map<String,Object>> list = sysConfOrderService.selectSysConfOrderList(null);
         return AjaxResult.success(list);
     }
 
