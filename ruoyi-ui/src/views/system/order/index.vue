@@ -77,7 +77,7 @@
     <el-table v-loading="loading" :data="orderList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="预约号" align="center" prop="confOrderId" />
-      <el-table-column label="预约人" align="center" prop="userId" />
+      <el-table-column label="预约人" align="center" prop="userName" />
       <el-table-column label="会议室" align="center" prop="confId" />
       <el-table-column label="预约开始时间" align="center" prop="startTime" width="180">
         <template slot-scope="scope">
@@ -202,7 +202,8 @@ export default {
         startTime: null,
         endTime: null,
         confTitle: null,
-        status: null
+        status: null,
+        userName:null
       },
       // 表单参数
       form: {},
