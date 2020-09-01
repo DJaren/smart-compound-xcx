@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </sql>
 
     <select id="selectSysConfOrderList" parameterType="SysConfOrder" resultType="java.util.HashMap">
-        select o.conf_order_id as confOrderId , o.user_id as userId, u.user_name as userName,o.conf_id as confId, date_format(o.create_time,'%Y-%m-%d %h:%i') createTime,  date_format(o.start_time,'%Y-%m-%d %h:%i') startTime, date_format(o.end_time,'%Y-%m-%d %h:%i') endTime, o.conf_title as confTitle, o.status from sys_conf_order o ,sys_user  u where o.user_id=u.user_id
+        select o.conf_order_id as confOrderId , o.user_id as userId, u.user_name as userName,o.conf_id as confId, date_format(o.create_time,'%Y-%m-%d %h:%i') createTime,  date_format(o.start_time,'%Y-%m-%d %h:%i') startTime, date_format(o.end_time,'%Y-%m-%d %h:%i') endTime, o.conf_title as confTitle, o.status from sys_conf_order o ,sys_user  u where o.user_id=u.user_id  and status=0
 
             <if test="confId != null "> and o.conf_id = #{confId}</if>
             <if test="startTime != null "> and o.start_time = #{startTime}</if>
