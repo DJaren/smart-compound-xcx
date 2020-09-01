@@ -47,18 +47,18 @@ public class SysConfOrderController extends BaseController
         return getDataTable(list);
     }
 
-    /**
-     * 导出会议室预约列表
-     */
-    @PreAuthorize("@ss.hasPermi('system:order:export')")
-    @Log(title = "会议室预约", businessType = BusinessType.EXPORT)
-    @GetMapping("/export")
-    public AjaxResult export(SysConfOrder sysConfOrder)
-    {
-        List<Map<String,Object>> list = sysConfOrderService.selectSysConfOrderList(sysConfOrder);
-        ExcelUtil<SysConfOrder> util = new ExcelUtil<SysConfOrder>(SysConfOrder.class);
-        return util.exportExcel(list, "order");
-    }
+//    /**
+//     * 导出会议室预约列表
+//     */
+//    @PreAuthorize("@ss.hasPermi('system:order:export')")
+//    @Log(title = "会议室预约", businessType = BusinessType.EXPORT)
+//    @GetMapping("/export")
+//    public AjaxResult export(SysConfOrder sysConfOrder)
+//    {
+//        List<Map<String,Object>> list = sysConfOrderService.selectSysConfOrderList(sysConfOrder);
+//        ExcelUtil<Map<String,Object>> util = new ExcelUtil<SysConfOrder>(SysConfOrder.class);
+//        return util.exportExcel(list, "order");
+//    }
 
     /**
      * 获取会议室预约详细信息
