@@ -23,7 +23,7 @@
       <el-form-item label="会议室状态" prop="status">
         <el-select v-model="queryParams.status" placeholder="请选择会议室状态" clearable size="small">
           <el-option label="预约" value="0" />
-          <el-option label="关闭" value="0" />
+          <el-option label="关闭" value="1" />
         </el-select>
       </el-form-item>
       <el-form-item>
@@ -81,16 +81,22 @@
       <el-table-column label="会议室" align="center" prop="confId" />
       <el-table-column label="预约开始时间" align="center" prop="startTime" width="180">
         <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.startTime, '{y}-{m}-{d} {h}:{m}') }}</span>
+          <span>{{ parseTime(scope.row.startTime, '{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
       </el-table-column>
       <el-table-column label="预约结束时间" align="center" prop="endTime" width="180">
         <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.endTime, '{y}-{m}-{d} {h}:{m}') }}</span>
+          <span>{{ parseTime(scope.row.endTime, '{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
       </el-table-column>
       <el-table-column label="会议主题" align="center" prop="confTitle" />
-      <el-table-column label="会议室状态" align="center" prop="status" />
+      <el-table-column label="会议室状态" align="center" prop="status">
+        <template slot-scope="scope">
+        <span v-if="scope.row.status =='0'">预约</span>
+          <span v-else-if="scope.row.status =='1'">关闭</span>
+        </template>
+
+      </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -131,7 +137,7 @@
         <el-form-item label="预约开始时间" prop="startTime">
           <el-date-picker clearable size="small" style="width: 200px"
             v-model="form.startTime"
-            type="date"
+            type="datetime"
             value-format="yyyy-MM-dd hh-mm"
             placeholder="选择预约开始时间">
           </el-date-picker>
@@ -139,7 +145,7 @@
         <el-form-item label="预约结束时间" prop="endTime">
           <el-date-picker clearable size="small" style="width: 200px"
             v-model="form.endTime"
-            type="date"
+            type="datetime"
             value-format="yyyy-MM-dd hh-mm"
             placeholder="选择预约结束时间">
           </el-date-picker>
@@ -147,11 +153,11 @@
         <el-form-item label="会议主题" prop="confTitle">
           <el-input v-model="form.confTitle" placeholder="请输入会议主题" />
         </el-form-item>
-        <el-form-item label="会议室状态">
-          <el-radio-group v-model="form.status">
-            <el-option label="预约" value="0" />
-            <el-option label="关闭" value="0" />
-          </el-radio-group>
+        <el-form-item label="会议室状态" prop="status">
+          <el-select v-model="form.status" placeholder="请选择会议室状态"  size="small">
+              <el-option label="预约" value="0" />
+              <el-option label="关闭" value="1" />
+          </el-select>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">

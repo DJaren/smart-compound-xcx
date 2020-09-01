@@ -1,6 +1,8 @@
 package com.ruoyi.system.service;
 
 import java.util.List;
+import java.util.Map;
+
 import com.ruoyi.system.domain.SysConfOrder;
 
 /**
@@ -17,7 +19,7 @@ public interface ISysConfOrderService
      * @param confOrderId 会议室预约ID
      * @return 会议室预约
      */
-    public SysConfOrder selectSysConfOrderById(Long confOrderId);
+    public Map<String,Object> selectSysConfOrderById(Long confOrderId);
 
     /**
      * 查询会议室预约列表
@@ -25,7 +27,7 @@ public interface ISysConfOrderService
      * @param sysConfOrder 会议室预约
      * @return 会议室预约集合
      */
-    public List<SysConfOrder> selectSysConfOrderList(SysConfOrder sysConfOrder);
+    public List<Map<String,Object>> selectSysConfOrderList(SysConfOrder sysConfOrder);
 
     /**
      * 新增会议室预约

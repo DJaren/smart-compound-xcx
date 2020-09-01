@@ -1,6 +1,8 @@
 package com.ruoyi.web.controller.system;
 
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +43,7 @@ public class SysConfOrderController extends BaseController
     public TableDataInfo list(SysConfOrder sysConfOrder)
     {
         startPage();
-        List<SysConfOrder> list = sysConfOrderService.selectSysConfOrderList(sysConfOrder);
+        List<Map<String,Object>> list = sysConfOrderService.selectSysConfOrderList(sysConfOrder);
         return getDataTable(list);
     }
 
@@ -53,7 +55,7 @@ public class SysConfOrderController extends BaseController
     @GetMapping("/export")
     public AjaxResult export(SysConfOrder sysConfOrder)
     {
-        List<SysConfOrder> list = sysConfOrderService.selectSysConfOrderList(sysConfOrder);
+        List<Map<String,Object>> list = sysConfOrderService.selectSysConfOrderList(sysConfOrder);
         ExcelUtil<SysConfOrder> util = new ExcelUtil<SysConfOrder>(SysConfOrder.class);
         return util.exportExcel(list, "order");
     }

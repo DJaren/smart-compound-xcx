@@ -29,19 +29,14 @@ public class SysConfOrder
     private Long confId;
 
     /** 创建时间 */
-    @JsonFormat(pattern = "yyyy-MM-dd hh-mm")
-    @Excel(name = "创建时间", width = 30, dateFormat = "yyyy-MM-dd hh-mm")
-    private Date createTime;
+    private String createTime;
 
     /** 预约开始时间 */
-    @JsonFormat(pattern = "yyyy-MM-dd hh-mm")
-    @Excel(name = "预约开始时间", width = 30, dateFormat = "yyyy-MM-dd hh-mm")
-    private Date startTime;
+
+    private String startTime;
 
     /** 预约结束时间 */
-    @JsonFormat(pattern = "yyyy-MM-dd hh-mm")
-    @Excel(name = "预约结束时间", width = 30, dateFormat = "yyyy-MM-dd hh-mm")
-    private Date endTime;
+    private String endTime;
 
     /** 会议主题 */
     @Excel(name = "会议主题")
@@ -79,27 +74,27 @@ public class SysConfOrder
         this.confId = confId;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
