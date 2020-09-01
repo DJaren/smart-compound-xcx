@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.system.mapper.SysConfOrderMapper">
-    
+
     <resultMap type="SysConfOrder" id="SysConfOrderResult">
         <result property="confOrderId"    column="conf_order_id"    />
         <result property="userId"    column="user_id"    />
@@ -16,11 +16,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectSysConfOrderVo">
-      select conf_order_id , user_id, conf_id, date_format(create_time,'%Y-%m-%d %h:%i') create_time,  date_format(start_time,'%Y-%m-%d %h:%i') start_time, date_format(end_time,'%Y-%m-%d %h:%i')end_time, conf_title, status from sys_conf_order
+      select conf_order_id , user_id, conf_id, date_format(create_time,'%Y-%m-%d %h:%i') create_time,
+      date_format(start_time,'%Y-%m-%d %h:%i') start_time, date_format(end_time,'%Y-%m-%d %h:%i')end_time,
+      conf_title, status from sys_conf_order
   </sql>
 
     <select id="selectSysConfOrderList" parameterType="SysConfOrder" resultType="java.util.HashMap">
-        select o.conf_order_id as confOrderId , o.user_id as userId, u.user_name as userName,o.conf_id as confId, date_format(o.create_time,'%Y-%m-%d %h:%i') createTime,  date_format(o.start_time,'%Y-%m-%d %h:%i') startTime, date_format(o.end_time,'%Y-%m-%d %h:%i') endTime, o.conf_title as confTitle, o.status from sys_conf_order o ,sys_user  u where o.user_id=u.user_id  and o.status=0
+        select o.conf_order_id as confOrderId , o.user_id as userId, u.user_name as userName,o.conf_id as confId,
+        date_format(o.create_time,'%Y-%m-%d %h:%i') createTime,  date_format(o.start_time,'%Y-%m-%d %h:%i') startTime,
+        date_format(o.end_time,'%Y-%m-%d %h:%i') endTime, o.conf_title as confTitle, o.status from sys_conf_order o ,sys_user  u
+        where o.user_id=u.user_id  and o.status=0
 
             <if test="confId != null "> and o.conf_id = #{confId}</if>
             <if test="startTime != null "> and o.start_time = #{startTime}</if>
@@ -29,12 +34,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="status != null "> and o.status = #{status}</if>
 
     </select>
-    
+
     <select id="selectSysConfOrderById" parameterType="Long" resultType="java.util.HashMap">
-     select o.conf_order_id as confOrderId , o.user_id as userId, u.user_name as userName,o.conf_id as confId, date_format(o.create_time,'%Y-%m-%d %h:%i') createTime,  date_format(o.start_time,'%Y-%m-%d %h:%i') startTime, date_format(o.end_time,'%Y-%m-%d %h:%i') endTime, o.conf_title as confTitle, o.status from sys_conf_order o ,sys_user  u where o.user_id=u.user_id
+     select o.conf_order_id as confOrderId , o.user_id as userId, u.user_name as userName,o.conf_id as confId,
+     date_format(o.create_time,'%Y-%m-%d %h:%i') createTime,  date_format(o.start_time,'%Y-%m-%d %h:%i') startTime,
+     date_format(o.end_time,'%Y-%m-%d %h:%i') endTime, o.conf_title as confTitle, o.status from sys_conf_order o ,sys_user  u
+     where o.user_id=u.user_id
         and o.conf_order_id = #{confOrderId}
     </select>
-        
+
     <insert id="insertSysConfOrder" parameterType="SysConfOrder" useGeneratedKeys="true" keyProperty="confOrderId">
         insert into sys_conf_order
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -76,10 +84,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
     <delete id="deleteSysConfOrderByIds" parameterType="String">
-        delete from sys_conf_order where conf_order_id in 
+        delete from sys_conf_order where conf_order_id in
         <foreach item="confOrderId" collection="array" open="(" separator="," close=")">
             #{confOrderId}
         </foreach>
     </delete>
-    
+
 </mapper>
