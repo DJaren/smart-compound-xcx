@@ -1,12 +1,13 @@
 package com.ruoyi.web.controller.system;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.ruoyi.common.constant.Constants;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.core.domain.entity.SysMenu;
@@ -62,8 +63,27 @@ public class SysLoginController
     {
         AjaxResult ajax = AjaxResult.success();
         // 生成令牌
-        String token = loginService.login1(loginBody.getUsername(), loginBody.getPassword());
-        ajax.put(Constants.TOKEN, token);
+        Map<String,Object> res  = loginService.login1(loginBody.getUsername(), loginBody.getPassword());
+        ajax.put(Constants.TOKEN, res.get("token"));
+        return ajax;
+    }
+
+    /**
+     * 小程序登录
+     * @param username
+     * @param password
+     * @return
+     */
+    @ApiOperation("小程序登录")
+    @PostMapping("/wxLogin")
+    public AjaxResult login2(@RequestParam(name = "username")String username,
+                             @RequestParam(name = "password")String password)
+    {
+        AjaxResult ajax = AjaxResult.success();
+        // 生成令牌
+        Map<String,Object> res = loginService.login1(username,password);
+        ajax.put(Constants.TOKEN, res.get("token"));
+        ajax.put("userId", res.get("userId"));
         return ajax;
     }
 
