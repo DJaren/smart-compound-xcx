@@ -73,11 +73,19 @@ public class SysDemoController extends BaseController {
     }
 
     /**
-     * 删除
+     * 删除多个
      */
     @ApiOperation("删除会议室预约信息")
     @DeleteMapping("/{confOrderIds}")
     public AjaxResult remove(@PathVariable Long[] confOrderIds) {
         return toAjax(sysConfOrderService.deleteSysConfOrderByIds(confOrderIds));
+    }
+    /**
+     * 删除单个
+     */
+    @ApiOperation("删除单个会议室预约信息")
+    @DeleteMapping("/{confOrderId}")
+    public AjaxResult removeSingle(@PathVariable Long confOrderId) {
+        return toAjax(sysConfOrderService.deleteSysConfOrderById(confOrderId));
     }
 }
