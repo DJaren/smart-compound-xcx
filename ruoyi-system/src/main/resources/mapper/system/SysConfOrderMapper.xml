@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       select conf_order_id , user_id, conf_id, date_format(create_time,'%Y-%m-%d %h:%i') create_time,
       date_format(start_time,'%Y-%m-%d %h:%i') start_time, date_format(end_time,'%Y-%m-%d %h:%i')end_time,
       conf_title, status from sys_conf_order
-  </sql>
+    </sql>
 
     <select id="selectSysConfOrderList" parameterType="SysConfOrder" resultType="java.util.HashMap">
         select o.conf_order_id as confOrderId , o.user_id as userId, u.user_name as userName,o.conf_id as confId,
@@ -79,9 +79,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where conf_order_id = #{confOrderId}
     </update>
 
-    <delete id="deleteSysConfOrderById" parameterType="Long">
-        delete from sys_conf_order where conf_order_id = #{confOrderId}
-    </delete>
+    <update id="deleteSysConfOrderById" parameterType="Long">
+        update sys_conf_order set status = '1' where conf_order_id = #{confOrderId}
+    </update>
 
     <delete id="deleteSysConfOrderByIds" parameterType="String">
         delete from sys_conf_order where conf_order_id in

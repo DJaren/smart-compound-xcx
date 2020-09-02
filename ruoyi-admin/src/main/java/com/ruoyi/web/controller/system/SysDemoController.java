@@ -49,7 +49,7 @@ public class SysDemoController extends BaseController {
      */
     @ApiOperation("按id获取会议室预约详情")
     @ApiImplicitParam(name = "confOrderId",value = "会议预约ID",required = true, dataType = "int", paramType = "path")
-    @GetMapping(value = "/{confOrderId}")
+    @GetMapping(value = "/getOrder/{confOrderId}")
     public AjaxResult getInfo(@PathVariable("confOrderId") Long confOrderId) {
         return AjaxResult.success(sysConfOrderService.selectSysConfOrderById(confOrderId));
     }
@@ -76,7 +76,7 @@ public class SysDemoController extends BaseController {
      * 删除多个
      */
     @ApiOperation("删除会议室预约信息")
-    @DeleteMapping("/{confOrderIds}")
+    @DeleteMapping("/deleteMulti/{confOrderIds}")
     public AjaxResult remove(@PathVariable Long[] confOrderIds) {
         return toAjax(sysConfOrderService.deleteSysConfOrderByIds(confOrderIds));
     }
@@ -84,7 +84,7 @@ public class SysDemoController extends BaseController {
      * 删除单个
      */
     @ApiOperation("删除单个会议室预约信息")
-    @DeleteMapping("/{confOrderId}")
+    @DeleteMapping("/deleteOne/{confOrderId}")
     public AjaxResult removeSingle(@PathVariable Long confOrderId) {
         return toAjax(sysConfOrderService.deleteSysConfOrderById(confOrderId));
     }
