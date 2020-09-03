@@ -1,5 +1,7 @@
 package com.ruoyi.system.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +11,8 @@ import org.springframework.stereotype.Service;
 import com.ruoyi.system.mapper.SysConfOrderMapper;
 import com.ruoyi.system.domain.SysConfOrder;
 import com.ruoyi.system.service.ISysConfOrderService;
+
+import static io.lettuce.core.MigrateArgs.Builder.replace;
 
 /**
  * 会议室预约Service业务层处理
@@ -55,6 +59,24 @@ public class SysConfOrderServiceImpl implements ISysConfOrderService
     @Override
     public int insertSysConfOrder(SysConfOrder sysConfOrder)
     {
+        String startTime = sysConfOrder.getStartTime();
+        String endTime = sysConfOrder.getStartTime();
+        String temp1=startTime.replace('年','-');
+        String temp2=temp1.replace('月','-');
+        String temp3=temp2.replace('日',' ');
+        String temp4 = temp3;
+        String temp5=temp4.substring(0,temp3.indexOf("周")-1)+temp4.substring(temp3.indexOf("周")+3);
+        String temp6 = temp5.concat(":00");
+
+        String temp7=endTime.replace('年','-');
+        String temp8=temp7.replace('月','-');
+        String temp9=temp8.replace('日',' ');
+        String temp10 = temp9;
+        String temp11=temp10.substring(0,temp9.indexOf("周")-1)+temp10.substring(temp9.indexOf("周")+3);
+        String temp12 = temp11.concat(":00");
+
+        sysConfOrder.setStartTime(temp6);
+        sysConfOrder.setEndTime(temp12);
         return sysConfOrderMapper.insertSysConfOrder(sysConfOrder);
     }
 
