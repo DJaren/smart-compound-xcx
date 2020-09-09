@@ -19,13 +19,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       select conf_order_id , user_id, conf_id, date_format(create_time,'%Y-%m-%d %h:%i') create_time,
       date_format(start_time,'%Y-%m-%d %h:%i') start_time, date_format(end_time,'%Y-%m-%d %h:%i')end_time,
       conf_title, status from sys_conf_order
-  </sql>
+    </sql>
 
     <select id="selectSysConfOrderList" parameterType="SysConfOrder" resultType="java.util.HashMap">
         select o.conf_order_id as confOrderId , o.user_id as userId, u.user_name as userName,o.conf_id as confId,
         date_format(o.create_time,'%Y-%m-%d %h:%i') createTime,  date_format(o.start_time,'%Y-%m-%d %h:%i') startTime,
-        date_format(o.end_time,'%Y-%m-%d %h:%i') endTime, o.conf_title as confTitle, o.status from sys_conf_order o ,sys_user  u
-        where o.user_id=u.user_id  and o.status=0
+        date_format(o.end_time,'%Y-%m-%d %h:%i') endTime, o.conf_title as confTitle, o.status
+        from sys_conf_order o ,sys_user  u where o.user_id=u.user_id  and o.status=0
 
             <if test="confId != null "> and o.conf_id = #{confId}</if>
             <if test="startTime != null "> and o.start_time = #{startTime}</if>
@@ -36,11 +36,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
 
     <select id="selectSysConfOrderById" parameterType="Long" resultType="java.util.HashMap">
-     select o.conf_order_id as confOrderId , o.user_id as userId, u.user_name as userName,o.conf_id as confId,
-     date_format(o.create_time,'%Y-%m-%d %h:%i') createTime,  date_format(o.start_time,'%Y-%m-%d %h:%i') startTime,
-     date_format(o.end_time,'%Y-%m-%d %h:%i') endTime, o.conf_title as confTitle, o.status from sys_conf_order o ,sys_user  u
-     where o.user_id=u.user_id
-        and o.conf_order_id = #{confOrderId}
+         select o.conf_order_id as confOrderId , o.user_id as userId, u.user_name as userName,o.conf_id as confId,
+         date_format(o.create_time,'%Y-%m-%d %h:%i') createTime,  date_format(o.start_time,'%Y-%m-%d %h:%i') startTime,
+         date_format(o.end_time,'%Y-%m-%d %h:%i') endTime, o.conf_title as confTitle, o.status
+         from sys_conf_order o ,sys_user  u where o.user_id=u.user_id and o.conf_order_id = #{confOrderId}
     </select>
 
     <insert id="insertSysConfOrder" parameterType="SysConfOrder" useGeneratedKeys="true" keyProperty="confOrderId">
@@ -52,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="startTime != null">start_time,</if>
             <if test="endTime != null">end_time,</if>
             <if test="confTitle != null and confTitle != ''">conf_title,</if>
-            <if test="status != null">status,</if>
+            status,
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="userId != null">#{userId},</if>
@@ -61,7 +60,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="startTime != null">#{startTime},</if>
             <if test="endTime != null">#{endTime},</if>
             <if test="confTitle != null and confTitle != ''">#{confTitle},</if>
-            <if test="status != null">#{status},</if>
+            0,
          </trim>
     </insert>
 
@@ -79,9 +78,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where conf_order_id = #{confOrderId}
     </update>
 
-    <delete id="deleteSysConfOrderById" parameterType="Long">
-        delete from sys_conf_order where conf_order_id = #{confOrderId}
-    </delete>
+    <update id="deleteSysConfOrderById" parameterType="Long">
+        update sys_conf_order set status = '1' where conf_order_id = #{confOrderId}
+    </update>
 
     <delete id="deleteSysConfOrderByIds" parameterType="String">
         delete from sys_conf_order where conf_order_id in

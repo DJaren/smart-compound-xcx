@@ -18,6 +18,11 @@ import com.ruoyi.common.utils.MessageUtils;
 import com.ruoyi.framework.manager.AsyncManager;
 import com.ruoyi.framework.manager.factory.AsyncFactory;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * 登录校验方法
  *
@@ -83,8 +88,9 @@ public class SysLoginService
 //        // 生成token
 //        return tokenService.createToken(loginUser);
 //    }
-    public String login1(String username, String password)
+    public Map<String,Object> login1(String username, String password)
     {
+        Map<String,Object> resMap = new HashMap<String,Object>();
         // 用户验证
         Authentication authentication = null;
         try
@@ -108,7 +114,9 @@ public class SysLoginService
         }
         AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_SUCCESS, MessageUtils.message("user.login.success")));
         LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+        resMap.put("token",tokenService.createToken(loginUser));
+        resMap.put("userId",loginUser.getUser().getUserId());
         // 生成token
-        return tokenService.createToken(loginUser);
+        return resMap;
     }
 }
