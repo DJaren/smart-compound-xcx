@@ -28,7 +28,7 @@ public class SysRoomServiceImpl implements ISysRoomService
      * @return 房间管理
      */
     @Override
-    public SysRoom selectSysRoomById(Long id)
+    public Map<String,Object> selectSysRoomById(Long id)
     {
         return sysRoomMapper.selectSysRoomById(id);
     }

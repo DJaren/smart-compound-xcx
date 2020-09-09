@@ -15,14 +15,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </sql>
 
     <select id="selectSysRoomList" parameterType="SysRoom" resultType="java.util.HashMap">
-        select  r.id as id, concat(b.build_num,f.floor_num) as floorId ,r.room_num as roomNum from sys_floor f ,sys_building b ,sys_room r where f.build_id=b.id and f.id=r.floor_id
+            select  r.id as id, concat(b.build_num,f.floor_num) as floorId ,r.room_num as roomNum from sys_floor f ,sys_building b ,sys_room r where f.build_id=b.id and f.id=r.floor_id
             <if test="floorId != null "> and r.floor_id = #{floorId}</if>
             <if test="roomNum != null  and roomNum != ''"> and r.room_num = #{roomNum}</if>
     </select>
     
-    <select id="selectSysRoomById" parameterType="Long" resultMap="SysRoomResult">
-        <include refid="selectSysRoomVo"/>
-        where id = #{id}
+    <select id="selectSysRoomById" parameterType="Long" resultType="java.util.HashMap">
+         select  r.id as id, b.id as buildId ,f.id as floorId ,r.room_num as roomNum from sys_floor f ,sys_building b ,sys_room r where f.build_id=b.id and f.id=r.floor_id
+        and r.id = #{id}
     </select>
         
     <insert id="insertSysRoom" parameterType="SysRoom" useGeneratedKeys="true" keyProperty="id">

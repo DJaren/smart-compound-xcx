@@ -19,7 +19,7 @@ public interface SysRoomMapper
      * @param id 房间管理ID
      * @return 房间管理
      */
-    public SysRoom selectSysRoomById(Long id);
+    public Map<String,Object> selectSysRoomById(Long id);
 
     /**
      * 查询房间管理列表

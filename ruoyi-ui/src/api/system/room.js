@@ -19,11 +19,10 @@ export function listFloor(query) {
 
 
 // 查询楼栋信息列表
-export function listBuild(query) {
+export function getBuilds(query) {
   return request({
-    url: '/system/building',
-    method: 'get',
-    params: query
+    url: '/system/building/',
+    method: 'get'
   })
 }
 // 查询房间管理详细
