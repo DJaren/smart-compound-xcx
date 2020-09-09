@@ -17,6 +17,14 @@ export function getOrder(confOrderId) {
   })
 }
 
+//
+export function getBuilds() {
+  return request({
+    url: '/system/building/',
+    method: 'get'
+  })
+}
+
 // 新增会议室预约
 export function addOrder(data) {
   return request({

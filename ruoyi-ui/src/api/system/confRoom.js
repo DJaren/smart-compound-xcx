@@ -9,6 +9,13 @@ export function listConfRoom(query) {
   })
 }
 
+//
+export function getBuilds(query) {
+  return request({
+    url: '/system/building/',
+    method: 'get'
+  })
+}
 // 查询会议室详细
 export function getConfRoom(id) {
   return request({

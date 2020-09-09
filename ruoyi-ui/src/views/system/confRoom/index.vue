@@ -1,53 +1,58 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="楼栋号" prop="buildId">
-        <el-select v-model="queryParams.buildId" placeholder="请选择楼栋" clearable size="small">
-          <el-option label="请选择字典生成" value="" />
-          <el-option
-            v-for="item in buildList"
-            :key="item.id"
-            :label="item.buildNum"
-            :value="item.id">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="楼层号" prop="floorId">
-        <el-select v-model="queryParams.floorId" placeholder="请选择楼层" clearable size="small">
-          <el-option label="请选择字典生成" value="" />
-          <el-option
-            v-for="item in floorList"
-            :key="item.id"
-            :label="item.floorNum"
-            :value="item.id">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="房间号" prop="roomid">
-        <el-select v-model="queryParams.roomid" placeholder="请选择房间号" clearable size="small">
-          <el-option label="请选择字典生成" value="" />
-          <el-option
-            v-for="item in roomList"
-            :key="item.id"
-            :label="item.roomNum"
-            :value="item.id">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="会议室名称" prop="name">
-        <el-input
-          v-model="queryParams.name"
-          placeholder="请输入会议室名称"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="cyan" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
-      </el-form-item>
-    </el-form>
+    <!--<el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">-->
+      <!--<el-form-item label="楼栋号" prop="buildId">-->
+        <!--<el-select v-model="queryParams.buildId"-->
+                   <!--@change="handleChange1"-->
+                   <!--placeholder="请选择楼栋号"-->
+                   <!--clearable-->
+                   <!--size="small">-->
+          <!--<el-option v-for="item in list1"-->
+                     <!--:key="item.id"-->
+                     <!--:label="item.buildNum"-->
+                     <!--:value="item.id">-->
+          <!--</el-option>-->
+        <!--</el-select>-->
+      <!--</el-form-item>-->
+      <!--<el-form-item label="楼层号" prop="floorId">-->
+        <!--<el-select v-model="queryParams.floorId"-->
+                   <!--placeholder="请选择楼层号"-->
+                   <!--clearable-->
+                   <!--@change="handleChange2"-->
+                   <!--size="small">-->
+          <!--<el-option v-for="item in list2"-->
+                     <!--:key="item.id"-->
+                     <!--:label="item.floorNum"-->
+                     <!--:value="item.id">-->
+          <!--</el-option>-->
+        <!--</el-select>-->
+      <!--</el-form-item>-->
+      <!--<el-form-item label="房间号" prop="roomid">-->
+        <!--<el-select v-model="queryParams.roomid"-->
+                   <!--placeholder="请选择房间号"-->
+                   <!--clearable-->
+                   <!--size="small">-->
+          <!--<el-option v-for="item in list3"-->
+                     <!--:key="item.id"-->
+                     <!--:label="item.roomNum"-->
+                     <!--:value="item.id">-->
+          <!--</el-option>-->
+        <!--</el-select>-->
+      <!--</el-form-item>-->
+      <!--&lt;!&ndash;<el-form-item label="会议室名称" prop="name">&ndash;&gt;-->
+        <!--&lt;!&ndash;<el-input&ndash;&gt;-->
+          <!--&lt;!&ndash;v-model="queryParams.name"&ndash;&gt;-->
+          <!--&lt;!&ndash;placeholder="请输入会议室名称"&ndash;&gt;-->
+          <!--&lt;!&ndash;clearable&ndash;&gt;-->
+          <!--&lt;!&ndash;size="small"&ndash;&gt;-->
+          <!--&lt;!&ndash;@keyup.enter.native="handleQuery"&ndash;&gt;-->
+        <!--&lt;!&ndash;/>&ndash;&gt;-->
+      <!--&lt;!&ndash;</el-form-item>&ndash;&gt;-->
+      <!--<el-form-item>-->
+        <!--<el-button type="cyan" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>-->
+        <!--<el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>-->
+      <!--</el-form-item>-->
+    <!--</el-form>-->
 
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
@@ -79,36 +84,25 @@
           v-hasPermi="['system:confRoom:remove']"
         >删除</el-button>
       </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="warning"
-          icon="el-icon-download"
-          size="mini"
-          @click="handleExport"
-          v-hasPermi="['system:confRoom:export']"
-        >导出</el-button>
-      </el-col>
+      <!--<el-col :span="1.5">-->
+        <!--<el-button-->
+          <!--type="warning"-->
+          <!--icon="el-icon-download"-->
+          <!--size="mini"-->
+          <!--@click="handleExport"-->
+          <!--v-hasPermi="['system:confRoom:export']"-->
+        <!--&gt;导出</el-button>-->
+      <!--</el-col>-->
 	  <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <el-table v-loading="loading" :data="confRoomList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="主键" align="center" prop="id" />
-      <el-form-item label="楼栋号" prop="buildId">
-        <el-select v-model="queryParams.buildId" placeholder="请选择楼栋" clearable size="small">
-          <el-option label="请选择字典生成" value="" />
-        </el-select>
-      </el-form-item>
-      <el-form-item label="楼层号" prop="floorId">
-        <el-select v-model="queryParams.floorId" placeholder="请选择楼层" clearable size="small">
-          <el-option label="请选择字典生成" value="" />
-        </el-select>
-      </el-form-item>
-      <el-form-item label="房间号" prop="roomid">
-        <el-select v-model="queryParams.roomid" placeholder="请选择房间号" clearable size="small">
-          <el-option label="请选择字典生成" value="" />
-        </el-select>
-      </el-form-item>
+      <el-table-column label="楼栋号" prop="buildId">
+      </el-table-column>
+      <el-table-column label="楼层号" prop="floorId"></el-table-column>
+      <el-table-column label="房间号" prop="roomid"></el-table-column>
       <el-table-column label="会议室名称" align="center" prop="name" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -129,7 +123,7 @@
         </template>
       </el-table-column>
     </el-table>
-    
+
     <pagination
       v-show="total>0"
       :total="total"
@@ -142,18 +136,41 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="楼栋号" prop="buildId">
-          <el-select v-model="queryParams.buildId" placeholder="请选择楼栋" clearable size="small">
-            <el-option label="请选择字典生成" value="" />
+          <el-select v-model="form.buildId"
+                     @change="handleChange1"
+                     placeholder="请选择楼栋号"
+                     clearable
+                     size="small">
+            <el-option v-for="item in list1"
+                       :key="item.id"
+                       :label="item.buildNum"
+                       :value="item.id">
+            </el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="楼层号" prop="floorId">
-          <el-select v-model="queryParams.floorId" placeholder="请选择楼层" clearable size="small">
-            <el-option label="请选择字典生成" value="" />
+          <el-select v-model="form.floorId"
+                     placeholder="请选择楼层号"
+                     clearable
+                     @change="handleChange2"
+                     size="small">
+            <el-option v-for="item in list2"
+                       :key="item.id"
+                       :label="item.floorNum"
+                       :value="item.id">
+            </el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="房间号" prop="roomid">
-          <el-select v-model="queryParams.roomid" placeholder="请选择房间号" clearable size="small">
-            <el-option label="请选择字典生成" value="" />
+          <el-select v-model="form.roomId"
+                     placeholder="请选择房间号"
+                     clearable
+                     size="small">
+            <el-option v-for="item in list3"
+                       :key="item.id"
+                       :label="item.roomNum"
+                       :value="item.id">
+            </el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="会议室名称" prop="name">
@@ -169,7 +186,7 @@
 </template>
 
 <script>
-import { listConfRoom, getConfRoom, delConfRoom, addConfRoom, updateConfRoom, exportConfRoom } from "@/api/system/confRoom";
+import { getBuilds,listConfRoom, getConfRoom, delConfRoom, addConfRoom, updateConfRoom, exportConfRoom } from "@/api/system/confRoom";
 
 export default {
   name: "ConfRoom",
@@ -187,7 +204,10 @@ export default {
       showSearch: true,
       // 总条数
       total: 0,
-      buildingList:[],
+      list1: [],
+      list2: [],
+      list3: [],
+      buildingList: [],
       floorList:[],
       roomList:[],
 
@@ -215,6 +235,7 @@ export default {
   },
   created() {
     this.getList();
+    this.getBuildsList();
   },
   methods: {
     /** 查询会议室列表 */
@@ -226,6 +247,31 @@ export default {
         this.loading = false;
       });
     },
+    getBuildsList() {
+      this.loading = true;
+      getBuilds(this.queryParams).then(response => {
+        this.list1 = response.data;
+      });
+    },
+    handleChange1 () {
+      let _self = this
+      debugger
+      this.list1.map(item => {
+        if (item.id === this.form.buildId) {
+          _self.list2 = item.sysFloorList
+        }
+      })
+    },
+    handleChange2 () {
+      let _self = this
+      debugger
+      this.list2.map(item => {
+        if (item.id === this.form.floorId) {
+          _self.list3 = item.sysRoomList
+        }
+      })
+    },
+
     // 取消按钮
     cancel() {
       this.open = false;
@@ -236,15 +282,17 @@ export default {
       this.form = {
         id: null,
         roomid: null,
+        buildId:null,
+        floorId:null,
         name: null
       };
       this.resetForm("form");
     },
-    /** 搜索按钮操作 */
-    handleQuery() {
-      this.queryParams.pageNum = 1;
-      this.getList();
-    },
+    // /** 搜索按钮操作 */
+    // handleQuery() {
+    //   this.queryParams.pageNum = 1;
+    //   this.getList();
+    // },
     /** 重置按钮操作 */
     resetQuery() {
       this.resetForm("queryForm");
@@ -311,18 +359,18 @@ export default {
         }).catch(function() {});
     },
     /** 导出按钮操作 */
-    handleExport() {
-      const queryParams = this.queryParams;
-      this.$confirm('是否确认导出所有会议室数据项?', "警告", {
-          confirmButtonText: "确定",
-          cancelButtonText: "取消",
-          type: "warning"
-        }).then(function() {
-          return exportConfRoom(queryParams);
-        }).then(response => {
-          this.download(response.msg);
-        }).catch(function() {});
-    }
+    // handleExport() {
+    //   const queryParams = this.queryParams;
+    //   this.$confirm('是否确认导出所有会议室数据项?', "警告", {
+    //       confirmButtonText: "确定",
+    //       cancelButtonText: "取消",
+    //       type: "warning"
+    //     }).then(function() {
+    //       return exportConfRoom(queryParams);
+    //     }).then(response => {
+    //       this.download(response.msg);
+    //     }).catch(function() {});
+    // }
   }
 };
 </script>

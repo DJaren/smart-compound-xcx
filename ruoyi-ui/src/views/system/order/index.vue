@@ -116,7 +116,7 @@
         </template>
       </el-table-column>
     </el-table>
-    
+
     <pagination
       v-show="total>0"
       :total="total"
@@ -128,11 +128,11 @@
     <!-- 添加或修改会议室预约对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="预约人" prop="userId">
-          <el-input v-model="form.userId" placeholder="请输入预约人" />
+        <el-form-item label="预约人" prop="userName">
+          <el-input v-model="form.userName" placeholder="请输入预约人" />
         </el-form-item>
-        <el-form-item label="会议室ID，外键" prop="confId">
-          <el-input v-model="form.confId" placeholder="请输入会议室ID，外键" />
+        <el-form-item label="会议室ID" prop="confId">
+          <el-input v-model="form.confId" placeholder="请输入会议室" />
         </el-form-item>
         <el-form-item label="预约开始时间" prop="startTime">
           <el-date-picker clearable size="small" style="width: 200px"
