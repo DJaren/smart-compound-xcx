@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysWasteMapper">
+    
+    <resultMap type="SysWaste" id="SysWasteResult">
+        <result property="id"    column="id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="wasteTime"    column="waste_time"    />
+        <result property="wasteType"    column="waste_type"    />
+        <result property="buildroom"    column="buildroom"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectSysWasteVo">
+        select id, waste_time, waste_type, buildroom, remark from sys_waste
+    </sql>
+
+    <select id="selectSysWasteList" parameterType="SysWaste" resultMap="SysWasteResult">
+        <include refid="selectSysWasteVo"/>
+        <where>  
+            <if test="userId != null "> and user_id = #{userId}</if>
+            and status=0
+        </where>
+    </select>
+    
+    <select id="selectSysWasteById" parameterType="Long" resultMap="SysWasteResult">
+        <include refid="selectSysWasteVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSysWaste" parameterType="SysWaste" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_waste
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="wasteTime != null">waste_time,</if>
+            <if test="wasteType != null">waste_type,</if>
+            <if test="buildroom != null">buildroom,</if>
+            <if test="remark != null">remark,</if>
+            <if test="userId != null">user_id,</if>
+            status,
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="wasteTime != null">#{wasteTime},</if>
+            <if test="wasteType != null">#{wasteType},</if>
+            <if test="buildroom != null">#{buildroom},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="userId != null">#{userId},</if>
+            0,
+         </trim>
+    </insert>
+
+    <update id="updateSysWaste" parameterType="SysWaste">
+        update sys_waste
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="wasteTime != null">waste_time = #{wasteTime},</if>
+            <if test="wasteType != null">waste_type = #{wasteType},</if>
+            <if test="buildroom != null">buildroom = #{buildroom},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="status != null">status = #{status},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSysWasteById" parameterType="Long">
+       update sys_waste set status =1 where id = #{id}
+    </delete>
+
+    <delete id="deleteSysWasteByIds" parameterType="String">
+        delete from sys_waste where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

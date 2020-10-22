@@ -5,7 +5,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import com.ruoyi.common.core.domain.entity.SysUser;
 import com.ruoyi.common.utils.DateUtils;
+import com.ruoyi.system.mapper.SysUserMapper;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.system.mapper.SysConfOrderMapper;
@@ -26,6 +29,9 @@ public class SysConfOrderServiceImpl implements ISysConfOrderService
     @Autowired
     private SysConfOrderMapper sysConfOrderMapper;
 
+    @Autowired
+    private SysUserMapper sysUserMapper;
+
     /**
      * 查询会议室预约
      *
@@ -36,6 +42,11 @@ public class SysConfOrderServiceImpl implements ISysConfOrderService
     public Map<String,Object> selectSysConfOrderById(Long confOrderId)
     {
         return sysConfOrderMapper.selectSysConfOrderById(confOrderId);
+    }
+
+    @Override
+    public List<Map<String, Object>> selectSysConfOrderByTime(String startTime, String endTime) {
+        return sysConfOrderMapper.selectSysConfOrderByTime(startTime,endTime);
     }
 
     /**
@@ -59,11 +70,6 @@ public class SysConfOrderServiceImpl implements ISysConfOrderService
     @Override
     public int insertSysConfOrder(SysConfOrder sysConfOrder)
     {
-        Long startTime = Long.parseLong( sysConfOrder.getStartTime());
-        Long endTime = Long.parseLong( sysConfOrder.getStartTime());
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        sysConfOrder.setStartTime(sdf.format(new Date(startTime)));
-        sysConfOrder.setEndTime(sdf.format(new Date(endTime)));
         return sysConfOrderMapper.insertSysConfOrder(sysConfOrder);
     }
 

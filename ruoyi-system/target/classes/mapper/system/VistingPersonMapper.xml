@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.VistingPersonMapper">
+    
+    <resultMap type="VistingPerson" id="VistingPersonResult">
+        <result property="id"    column="id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="openId"    column="open_id"    />
+        <result property="visitingTime"    column="visiting_time"    />
+        <result property="visitingName"    column="visiting_name"    />
+        <result property="vistingReason"    column="visting_reason"    />
+        <result property="vistingDept"    column="visting_dept"    />
+        <result property="vistingNum"    column="visting_num"    />
+        <result property="carCode"    column="car_code"    />
+        <result property="vistingCode"    column="visting_code"    />
+        <result property="status"    column="status"    />
+    </resultMap>
+
+    <sql id="selectVistingPersonVo">
+        select id, user_id,open_id,visiting_time, visiting_name,visting_reason, visting_dept, visting_num, car_code, visting_code ,status from visting_person
+    </sql>
+
+    <select id="selectUserInfoByPid" parameterType="Long" resultType="java.util.HashMap">
+        select * from sys_user u ,visting_person v where u.user_id=v.user_id and v.id=#{id}
+    </select>
+
+    <select id="selectVistingPersonList" parameterType="VistingPerson" resultMap="VistingPersonResult">
+        <include refid="selectVistingPersonVo"/>
+        <where>
+            <if test="userId != null "> and user_id = #{userId}</if>
+             and status=0
+        </where>
+    </select>
+    
+    <select id="selectVistingPersonById" parameterType="Long" resultMap="VistingPersonResult">
+        <include refid="selectVistingPersonVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertVistingPerson" parameterType="VistingPerson" useGeneratedKeys="true" keyProperty="id">
+        insert into visting_person
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="visitingTime != null">visiting_time,</if>
+            <if test="openId != null">open_id,</if>
+            <if test="visitingName != null">visiting_name,</if>
+            <if test="vistingReason != null">visting_reason,</if>
+            <if test="vistingDept != null">visting_dept,</if>
+            <if test="vistingNum != null">visting_num,</if>
+            <if test="carCode != null">car_code,</if>
+            <if test="vistingCode != null">visting_code,</if>
+            <if test="userId != null">user_id,</if>
+            status,
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="visitingTime != null">#{visitingTime},</if>
+            <if test="openId != null">#{openId},</if>
+            <if test="visitingName != null">#{visitingName},</if>
+            <if test="vistingReason != null">#{vistingReason},</if>
+            <if test="vistingDept != null">#{vistingDept},</if>
+            <if test="vistingNum != null">#{vistingNum},</if>
+            <if test="carCode != null">#{carCode},</if>
+            <if test="vistingCode != null">#{vistingCode},</if>
+            <if test="userId != null">#{userId},</if>
+            1,
+         </trim>
+    </insert>
+
+    <update id="updateVistingPerson" parameterType="VistingPerson">
+        update visting_person
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="visitingTime != null">visiting_time = #{visitingTime},</if>
+            <if test="openId != null">open_id = #{openId},</if>
+            <if test="visitingName != null">visiting_name = #{visitingName},</if>
+            <if test="vistingReason != null">visting_reason = #{vistingReason},</if>
+            <if test="vistingDept != null">visting_dept = #{vistingDept},</if>
+            <if test="vistingNum != null">visting_num = #{vistingNum},</if>
+            <if test="carCode != null">car_code = #{carCode},</if>
+            <if test="vistingCode != null">visting_code = #{vistingCode},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="userId != null">user_id = #{userId},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <update id="deleteVistingPersonById" parameterType="Long">
+       update visting_person  set status=1 where id = #{id}
+    </update>
+
+    <delete id="deleteVistingPersonByIds" parameterType="String">
+        delete from visting_person where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

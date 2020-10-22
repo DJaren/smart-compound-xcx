@@ -43,52 +43,10 @@ public class SysLoginService
     /**
      * 登录验证
      *
-     * @param username 用户名
-     * @param password 密码
+     * @param
      * @return 结果
      */
-//    public String login(String username, String password, String code, String uuid)
-//    {
-//        String verifyKey = Constants.CAPTCHA_CODE_KEY + uuid;
-//        String captcha = redisCache.getCacheObject(verifyKey);
-//        redisCache.deleteObject(verifyKey);
-//        if (captcha == null)
-//        {
-//            AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("user.jcaptcha.expire")));
-//            throw new CaptchaExpireException();
-//        }
-//        if (!code.equalsIgnoreCase(captcha))
-//        {
-//            AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("user.jcaptcha.error")));
-//            throw new CaptchaException();
-//        }
-//        // 用户验证
-//        Authentication authentication = null;
-//        try
-//        {
-//            // 该方法会去调用UserDetailsServiceImpl.loadUserByUsername
-//            authentication = authenticationManager
-//                    .authenticate(new UsernamePasswordAuthenticationToken(username, password));
-//        }
-//        catch (Exception e)
-//        {
-//            if (e instanceof BadCredentialsException)
-//            {
-//                AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("user.password.not.match")));
-//                throw new UserPasswordNotMatchException();
-//            }
-//            else
-//            {
-//                AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_FAIL, e.getMessage()));
-//                throw new CustomException(e.getMessage());
-//            }
-//        }
-//        AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_SUCCESS, MessageUtils.message("user.login.success")));
-//        LoginUser loginUser = (LoginUser) authentication.getPrincipal();
-//        // 生成token
-//        return tokenService.createToken(loginUser);
-//    }
-    public Map<String,Object> login1(String username, String password)
+    public  Map<String,Object>  login(String username, String password)
     {
         Map<String,Object> resMap = new HashMap<String,Object>();
         // 用户验证
@@ -97,7 +55,7 @@ public class SysLoginService
         {
             // 该方法会去调用UserDetailsServiceImpl.loadUserByUsername
             authentication = authenticationManager
-                    .authenticate(new UsernamePasswordAuthenticationToken(username, password));
+                    .authenticate(new UsernamePasswordAuthenticationToken(username,password));
         }
         catch (Exception e)
         {
@@ -116,6 +74,37 @@ public class SysLoginService
         LoginUser loginUser = (LoginUser) authentication.getPrincipal();
         resMap.put("token",tokenService.createToken(loginUser));
         resMap.put("userId",loginUser.getUser().getUserId());
+        // 生成token
+        return resMap;
+    }
+    public Map<String,Object> login1(String openId)
+    {
+        Map<String,Object> resMap = new HashMap<String,Object>();
+        // 用户验证
+        Authentication authentication = null;
+        try
+        {
+            // 该方法会去调用UserDetailsServiceImpl.loadUserByUsername
+            authentication = authenticationManager
+                    .authenticate(new UsernamePasswordAuthenticationToken("admin","admin123"));
+        }
+        catch (Exception e)
+        {
+            if (e instanceof BadCredentialsException)
+            {
+             //   AsyncManager.me().execute(AsyncFactory.recordLogininfor(openId, Constants.LOGIN_FAIL, MessageUtils.message("user.password.not.match")));
+                throw new UserPasswordNotMatchException();
+            }
+            else
+            {
+             //   AsyncManager.me().execute(AsyncFactory.recordLogininfor(openId, Constants.LOGIN_FAIL, e.getMessage()));
+                throw new CustomException(e.getMessage());
+            }
+        }
+       // AsyncManager.me().execute(AsyncFactory.recordLogininfor(openId, Constants.LOGIN_SUCCESS, MessageUtils.message("user.login.success")));
+        LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+        resMap.put("token",tokenService.createToken(loginUser));
+      //  resMap.put("userId",loginUser.getUser().getUserId());
         // 生成token
         return resMap;
     }

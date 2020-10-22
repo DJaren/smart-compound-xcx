@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="320cbf91-18d3-48ed-9435-aeb7248da0d0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruoyi-admin/src/main/java/com/ruoyi/web/controller/system/SysConfOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ruoyi-admin/src/main/java/com/ruoyi/web/controller/system/SysConfOrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruoyi-admin/src/main/java/com/ruoyi/web/controller/system/SysLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ruoyi-admin/src/main/java/com/ruoyi/web/controller/system/SysLoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruoyi-admin/src/main/java/com/ruoyi/web/controller/system/SysNoticeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ruoyi-admin/src/main/java/com/ruoyi/web/controller/system/SysNoticeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruoyi-admin/src/main/java/com/ruoyi/web/controller/system/SysUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ruoyi-admin/src/main/java/com/ruoyi/web/controller/system/SysUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruoyi-admin/src/main/resources/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ruoyi-admin/src/main/resources/application-druid.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruoyi-admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ruoyi-admin/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruoyi-common/src/main/java/com/ruoyi/common/core/domain/entity/SysUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/ruoyi-common/src/main/java/com/ruoyi/common/core/domain/entity/SysUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruoyi-framework/src/main/java/com/ruoyi/framework/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ruoyi-framework/src/main/java/com/ruoyi/framework/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruoyi-framework/src/main/java/com/ruoyi/framework/web/service/SysLoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ruoyi-framework/src/main/java/com/ruoyi/framework/web/service/SysLoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruoyi-framework/src/main/java/com/ruoyi/framework/web/service/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ruoyi-framework/src/main/java/com/ruoyi/framework/web/service/UserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruoyi-system/src/main/java/com/ruoyi/system/domain/SysConfOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/ruoyi-system/src/main/java/com/ruoyi/system/domain/SysConfOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruoyi-system/src/main/java/com/ruoyi/system/mapper/SysConfOrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ruoyi-system/src/main/java/com/ruoyi/system/mapper/SysConfOrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruoyi-system/src/main/java/com/ruoyi/system/mapper/SysUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ruoyi-system/src/main/java/com/ruoyi/system/mapper/SysUserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruoyi-system/src/main/java/com/ruoyi/system/service/ISysConfOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ruoyi-system/src/main/java/com/ruoyi/system/service/ISysConfOrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruoyi-system/src/main/java/com/ruoyi/system/service/impl/SysConfOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ruoyi-system/src/main/java/com/ruoyi/system/service/impl/SysConfOrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruoyi-system/src/main/resources/mapper/system/SysConfOrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ruoyi-system/src/main/resources/mapper/system/SysConfOrderMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruoyi-system/src/main/resources/mapper/system/SysUserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ruoyi-system/src/main/resources/mapper/system/SysUserMapper.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="$USER_HOME$/repository" />
+        <option name="mavenHome" value="$USER_HOME$/Apache/apache-maven-3.6.1" />
+        <option name="userSettingsFile" value="$USER_HOME$/Apache/apache-maven-3.6.1/conf/settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1hrAyxkNutl09hCR7ePPvBik7GG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ruoyi-admin/src/main/java/com/ruoyi/web/controller/system" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ruoyi-system/src/main/resources/mapper/system" />
+      <recent name="$PROJECT_DIR$/ruoyi-admin/src/main/java/com/ruoyi/web/controller/system" />
+      <recent name="$PROJECT_DIR$/ruoyi-system/src/main/java/com/ruoyi/system/service/impl" />
+      <recent name="$PROJECT_DIR$/ruoyi-system/src/main/java/com/ruoyi/system/service" />
+      <recent name="$PROJECT_DIR$/ruoyi-system/src/main/java/com/ruoyi/system/mapper" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ruoyi-admin/src/main/java/com/ruoyi/web/controller/system" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="RuoYiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="ruoyi-admin" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ruoyi.RuoYiApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="320cbf91-18d3-48ed-9435-aeb7248da0d0" name="Default Changelist" comment="" />
+      <created>1600759095836</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1600759095836</updated>
+      <workItem from="1600759097832" duration="2412000" />
+      <workItem from="1600823436228" duration="5983000" />
+      <workItem from="1600844181844" duration="6061000" />
+      <workItem from="1600914529837" duration="3519000" />
+      <workItem from="1600934864059" duration="3519000" />
+      <workItem from="1600995491129" duration="13518000" />
+      <workItem from="1601168303547" duration="5707000" />
+      <workItem from="1601181851225" duration="9568000" />
+      <workItem from="1601271706335" duration="2249000" />
+      <workItem from="1601359175687" duration="770000" />
+      <workItem from="1601390333656" duration="545000" />
+      <workItem from="1601427800330" duration="1617000" />
+      <workItem from="1601447426342" duration="475000" />
+      <workItem from="1601450714694" duration="2199000" />
+      <workItem from="1602208977613" duration="7340000" />
+      <workItem from="1602317481068" duration="12701000" />
+      <workItem from="1602551084948" duration="19907000" />
+      <workItem from="1602637268076" duration="10391000" />
+      <workItem from="1602724517606" duration="30463000" />
+      <workItem from="1603069922383" duration="7707000" />
+      <workItem from="1603098728171" duration="576000" />
+      <workItem from="1603120706822" duration="3000" />
+      <workItem from="1603156149917" duration="2520000" />
+      <workItem from="1603181449062" duration="4657000" />
+      <workItem from="1603262365049" duration="402000" />
+      <workItem from="1603347263706" duration="2752000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1" value="TOOL_WINDOW" />
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+      <path value="$PROJECT_DIR$/xcx" />
+    </ignored-roots>
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="160" y="116" width="1083" height="690" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602572147728">
+      <screen x="0" y="23" width="1400" height="877" />
+    </state>
+    <state x="160" y="116" width="1083" height="690" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1400.877@0.23.1400.877" timestamp="1602572147728" />
+    <state x="466" y="77" key="#com.intellij.ide.util.MemberChooser" timestamp="1602837501040">
+      <screen x="0" y="23" width="1400" height="877" />
+    </state>
+    <state x="466" y="77" key="#com.intellij.ide.util.MemberChooser/0.23.1400.877@0.23.1400.877" timestamp="1602837501040" />
+    <state x="466" y="77" key="#com.intellij.ide.util.MemberChooser/0.23.1401.877@0.23.1401.877" timestamp="1602662730509" />
+    <state x="467" y="77" key="#com.intellij.ide.util.MemberChooser/0.23.1402.877@0.23.1402.877" timestamp="1600844475220" />
+    <state x="218" y="23" key="CommitChangelistDialog2" timestamp="1603349651340">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="218" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1603349651340" />
+    <state width="396" height="582" key="DebuggerActiveHint" timestamp="1601192257062">
+      <screen x="0" y="23" width="1400" height="877" />
+    </state>
+    <state width="396" height="582" key="DebuggerActiveHint/0.23.1400.877@0.23.1400.877" timestamp="1601192257062" />
+    <state x="124" y="100" key="DiffContextDialog" timestamp="1603349615084">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="124" y="100" key="DiffContextDialog/0.23.1440.877@0.23.1440.877" timestamp="1603349615084" />
+    <state x="497" y="372" key="Github.CreateGistDialog" timestamp="1603348585589">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="484" y="372" key="Github.CreateGistDialog/0.23.1401.877@0.23.1401.877" timestamp="1600936092032" />
+    <state x="484" y="372" key="Github.CreateGistDialog/0.23.1402.877@0.23.1402.877" timestamp="1602582450516" />
+    <state x="497" y="372" key="Github.CreateGistDialog/0.23.1440.877@0.23.1440.877" timestamp="1603348585589" />
+    <state x="555" y="344" width="289" height="316" key="Github.ShareDialog" timestamp="1603348632868">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="555" y="344" width="289" height="316" key="Github.ShareDialog/0.23.1440.877@0.23.1440.877" timestamp="1603348632868" />
+    <state width="1348" height="265" key="GridCell.Tab.0.bottom" timestamp="1603242348044">
+      <screen x="0" y="23" width="1401" height="877" />
+    </state>
+    <state width="1348" height="570" key="GridCell.Tab.0.bottom/0.23.1400.877@0.23.1400.877" timestamp="1603184925561" />
+    <state width="1348" height="265" key="GridCell.Tab.0.bottom/0.23.1401.877@0.23.1401.877" timestamp="1603242348044" />
+    <state width="1348" height="133" key="GridCell.Tab.0.bottom/0.23.1402.877@0.23.1402.877" timestamp="1603185804645" />
+    <state width="1348" height="231" key="GridCell.Tab.0.bottom/0.23.1403.877@0.23.1403.877" timestamp="1603087992277" />
+    <state width="1349" height="189" key="GridCell.Tab.0.bottom/0.23.1404.877@0.23.1404.877" timestamp="1601024604116" />
+    <state width="1349" height="3" key="GridCell.Tab.0.bottom/0.23.1405.877@0.23.1405.877" timestamp="1601001849868" />
+    <state width="1348" height="265" key="GridCell.Tab.0.center" timestamp="1603242348043">
+      <screen x="0" y="23" width="1401" height="877" />
+    </state>
+    <state width="1348" height="570" key="GridCell.Tab.0.center/0.23.1400.877@0.23.1400.877" timestamp="1603184925560" />
+    <state width="1348" height="265" key="GridCell.Tab.0.center/0.23.1401.877@0.23.1401.877" timestamp="1603242348043" />
+    <state width="1348" height="133" key="GridCell.Tab.0.center/0.23.1402.877@0.23.1402.877" timestamp="1603185804644" />
+    <state width="1348" height="231" key="GridCell.Tab.0.center/0.23.1403.877@0.23.1403.877" timestamp="1603087992276" />
+    <state width="1349" height="189" key="GridCell.Tab.0.center/0.23.1404.877@0.23.1404.877" timestamp="1601024604115" />
+    <state width="1349" height="3" key="GridCell.Tab.0.center/0.23.1405.877@0.23.1405.877" timestamp="1601001849868" />
+    <state width="1348" height="265" key="GridCell.Tab.0.left" timestamp="1603242348043">
+      <screen x="0" y="23" width="1401" height="877" />
+    </state>
+    <state width="1348" height="570" key="GridCell.Tab.0.left/0.23.1400.877@0.23.1400.877" timestamp="1603184925560" />
+    <state width="1348" height="265" key="GridCell.Tab.0.left/0.23.1401.877@0.23.1401.877" timestamp="1603242348043" />
+    <state width="1348" height="133" key="GridCell.Tab.0.left/0.23.1402.877@0.23.1402.877" timestamp="1603185804644" />
+    <state width="1348" height="231" key="GridCell.Tab.0.left/0.23.1403.877@0.23.1403.877" timestamp="1603087992275" />
+    <state width="1349" height="189" key="GridCell.Tab.0.left/0.23.1404.877@0.23.1404.877" timestamp="1601024604114" />
+    <state width="1349" height="3" key="GridCell.Tab.0.left/0.23.1405.877@0.23.1405.877" timestamp="1601001849868" />
+    <state width="1348" height="265" key="GridCell.Tab.0.right" timestamp="1603242348044">
+      <screen x="0" y="23" width="1401" height="877" />
+    </state>
+    <state width="1348" height="570" key="GridCell.Tab.0.right/0.23.1400.877@0.23.1400.877" timestamp="1603184925560" />
+    <state width="1348" height="265" key="GridCell.Tab.0.right/0.23.1401.877@0.23.1401.877" timestamp="1603242348044" />
+    <state width="1348" height="133" key="GridCell.Tab.0.right/0.23.1402.877@0.23.1402.877" timestamp="1603185804645" />
+    <state width="1348" height="231" key="GridCell.Tab.0.right/0.23.1403.877@0.23.1403.877" timestamp="1603087992276" />
+    <state width="1349" height="189" key="GridCell.Tab.0.right/0.23.1404.877@0.23.1404.877" timestamp="1601024604116" />
+    <state width="1349" height="3" key="GridCell.Tab.0.right/0.23.1405.877@0.23.1405.877" timestamp="1601001849868" />
+    <state width="1348" height="265" key="GridCell.Tab.1.bottom" timestamp="1603242348045">
+      <screen x="0" y="23" width="1401" height="877" />
+    </state>
+    <state width="1348" height="570" key="GridCell.Tab.1.bottom/0.23.1400.877@0.23.1400.877" timestamp="1603184925561" />
+    <state width="1348" height="265" key="GridCell.Tab.1.bottom/0.23.1401.877@0.23.1401.877" timestamp="1603242348045" />
+    <state width="1348" height="133" key="GridCell.Tab.1.bottom/0.23.1402.877@0.23.1402.877" timestamp="1603185804646" />
+    <state width="1348" height="231" key="GridCell.Tab.1.bottom/0.23.1403.877@0.23.1403.877" timestamp="1603087992278" />
+    <state width="1349" height="129" key="GridCell.Tab.1.bottom/0.23.1404.877@0.23.1404.877" timestamp="1601024603900" />
+    <state width="1349" height="3" key="GridCell.Tab.1.bottom/0.23.1405.877@0.23.1405.877" timestamp="1601001849869" />
+    <state width="1348" height="265" key="GridCell.Tab.1.center" timestamp="1603242348045">
+      <screen x="0" y="23" width="1401" height="877" />
+    </state>
+    <state width="1348" height="570" key="GridCell.Tab.1.center/0.23.1400.877@0.23.1400.877" timestamp="1603184925561" />
+    <state width="1348" height="265" key="GridCell.Tab.1.center/0.23.1401.877@0.23.1401.877" timestamp="1603242348045" />
+    <state width="1348" height="133" key="GridCell.Tab.1.center/0.23.1402.877@0.23.1402.877" timestamp="1603185804646" />
+    <state width="1348" height="231" key="GridCell.Tab.1.center/0.23.1403.877@0.23.1403.877" timestamp="1603087992278" />
+    <state width="1349" height="129" key="GridCell.Tab.1.center/0.23.1404.877@0.23.1404.877" timestamp="1601024603899" />
+    <state width="1349" height="3" key="GridCell.Tab.1.center/0.23.1405.877@0.23.1405.877" timestamp="1601001849869" />
+    <state width="1348" height="265" key="GridCell.Tab.1.left" timestamp="1603242348044">
+      <screen x="0" y="23" width="1401" height="877" />
+    </state>
+    <state width="1348" height="570" key="GridCell.Tab.1.left/0.23.1400.877@0.23.1400.877" timestamp="1603184925561" />
+    <state width="1348" height="265" key="GridCell.Tab.1.left/0.23.1401.877@0.23.1401.877" timestamp="1603242348044" />
+    <state width="1348" height="133" key="GridCell.Tab.1.left/0.23.1402.877@0.23.1402.877" timestamp="1603185804645" />
+    <state width="1348" height="231" key="GridCell.Tab.1.left/0.23.1403.877@0.23.1403.877" timestamp="1603087992277" />
+    <state width="1349" height="129" key="GridCell.Tab.1.left/0.23.1404.877@0.23.1404.877" timestamp="1601024603899" />
+    <state width="1349" height="3" key="GridCell.Tab.1.left/0.23.1405.877@0.23.1405.877" timestamp="1601001849869" />
+    <state width="1348" height="265" key="GridCell.Tab.1.right" timestamp="1603242348045">
+      <screen x="0" y="23" width="1401" height="877" />
+    </state>
+    <state width="1348" height="570" key="GridCell.Tab.1.right/0.23.1400.877@0.23.1400.877" timestamp="1603184925561" />
+    <state width="1348" height="265" key="GridCell.Tab.1.right/0.23.1401.877@0.23.1401.877" timestamp="1603242348045" />
+    <state width="1348" height="133" key="GridCell.Tab.1.right/0.23.1402.877@0.23.1402.877" timestamp="1603185804646" />
+    <state width="1348" height="231" key="GridCell.Tab.1.right/0.23.1403.877@0.23.1403.877" timestamp="1603087992278" />
+    <state width="1349" height="129" key="GridCell.Tab.1.right/0.23.1404.877@0.23.1404.877" timestamp="1601024603899" />
+    <state width="1349" height="3" key="GridCell.Tab.1.right/0.23.1405.877@0.23.1405.877" timestamp="1601001849869" />
+    <state width="1348" height="265" key="GridCell.Tab.2.bottom" timestamp="1603242348047">
+      <screen x="0" y="23" width="1401" height="877" />
+    </state>
+    <state width="1348" height="265" key="GridCell.Tab.2.bottom/0.23.1400.877@0.23.1400.877" timestamp="1603182441490" />
+    <state width="1348" height="265" key="GridCell.Tab.2.bottom/0.23.1401.877@0.23.1401.877" timestamp="1603242348047" />
+    <state width="1349" height="189" key="GridCell.Tab.2.bottom/0.23.1402.877@0.23.1402.877" timestamp="1600999824427" />
+    <state width="1349" height="190" key="GridCell.Tab.2.bottom/0.23.1403.877@0.23.1403.877" timestamp="1601025655489" />
+    <state width="1349" height="189" key="GridCell.Tab.2.bottom/0.23.1404.877@0.23.1404.877" timestamp="1601024603853" />
+    <state width="1348" height="265" key="GridCell.Tab.2.center" timestamp="1603242348046">
+      <screen x="0" y="23" width="1401" height="877" />
+    </state>
+    <state width="1348" height="265" key="GridCell.Tab.2.center/0.23.1400.877@0.23.1400.877" timestamp="1603182441489" />
+    <state width="1348" height="265" key="GridCell.Tab.2.center/0.23.1401.877@0.23.1401.877" timestamp="1603242348046" />
+    <state width="1349" height="189" key="GridCell.Tab.2.center/0.23.1402.877@0.23.1402.877" timestamp="1600999824426" />
+    <state width="1349" height="190" key="GridCell.Tab.2.center/0.23.1403.877@0.23.1403.877" timestamp="1601025655488" />
+    <state width="1349" height="189" key="GridCell.Tab.2.center/0.23.1404.877@0.23.1404.877" timestamp="1601024603853" />
+    <state width="1348" height="265" key="GridCell.Tab.2.left" timestamp="1603242348046">
+      <screen x="0" y="23" width="1401" height="877" />
+    </state>
+    <state width="1348" height="265" key="GridCell.Tab.2.left/0.23.1400.877@0.23.1400.877" timestamp="1603182441489" />
+    <state width="1348" height="265" key="GridCell.Tab.2.left/0.23.1401.877@0.23.1401.877" timestamp="1603242348046" />
+    <state width="1349" height="189" key="GridCell.Tab.2.left/0.23.1402.877@0.23.1402.877" timestamp="1600999824426" />
+    <state width="1349" height="190" key="GridCell.Tab.2.left/0.23.1403.877@0.23.1403.877" timestamp="1601025655488" />
+    <state width="1349" height="189" key="GridCell.Tab.2.left/0.23.1404.877@0.23.1404.877" timestamp="1601024603852" />
+    <state width="1348" height="265" key="GridCell.Tab.2.right" timestamp="1603242348046">
+      <screen x="0" y="23" width="1401" height="877" />
+    </state>
+    <state width="1348" height="265" key="GridCell.Tab.2.right/0.23.1400.877@0.23.1400.877" timestamp="1603182441489" />
+    <state width="1348" height="265" key="GridCell.Tab.2.right/0.23.1401.877@0.23.1401.877" timestamp="1603242348046" />
+    <state width="1349" height="189" key="GridCell.Tab.2.right/0.23.1402.877@0.23.1402.877" timestamp="1600999824427" />
+    <state width="1349" height="190" key="GridCell.Tab.2.right/0.23.1403.877@0.23.1403.877" timestamp="1601025655488" />
+    <state width="1349" height="189" key="GridCell.Tab.2.right/0.23.1404.877@0.23.1404.877" timestamp="1601024603853" />
+    <state x="401" y="103" key="RollbackChangesDialog" timestamp="1603349649426">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="401" y="103" key="RollbackChangesDialog/0.23.1440.877@0.23.1440.877" timestamp="1603349649426" />
+    <state x="184" y="23" width="1216" height="877" key="SettingsEditor" timestamp="1600823457883">
+      <screen x="0" y="23" width="1400" height="877" />
+    </state>
+    <state x="184" y="23" width="1216" height="877" key="SettingsEditor/0.23.1400.877@0.23.1400.877" timestamp="1600823457883" />
+    <state x="200" y="138" key="Vcs.Push.Dialog.v2" timestamp="1603348974433">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="200" y="138" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1603348974433" />
+    <state x="100" y="123" width="1200" height="677" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1603350032314">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="100" y="123" width="1200" height="677" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.23.1440.877@0.23.1440.877" timestamp="1603350032314" />
+    <state x="427" y="336" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1603349560246">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="415" y="336" key="git4idea.remote.GitConfigureRemotesDialog/0.23.1400.877@0.23.1400.877" timestamp="1600763595098" />
+    <state x="427" y="336" key="git4idea.remote.GitConfigureRemotesDialog/0.23.1440.877@0.23.1440.877" timestamp="1603349560246" />
+    <state x="280" y="23" width="838" height="877" key="search.everywhere.popup" timestamp="1602472594042">
+      <screen x="0" y="23" width="1400" height="877" />
+    </state>
+    <state x="280" y="23" width="838" height="877" key="search.everywhere.popup/0.23.1400.877@0.23.1400.877" timestamp="1602472594042" />
+    <state x="281" y="23" width="838" height="1032" key="search.everywhere.popup/0.23.1402.877@0.23.1402.877" timestamp="1600938008455" />
+    <state x="281" y="23" width="838" height="1032" key="search.everywhere.popup/0.23.1403.877@0.23.1403.877" timestamp="1600997869982" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ruoyi-system/src/main/java/com/ruoyi/system/service/impl/SysClearServiceImpl.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ruoyi-admin/src/main/java/com/ruoyi/web/controller/system/SysClearController.java</url>
+          <line>78</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

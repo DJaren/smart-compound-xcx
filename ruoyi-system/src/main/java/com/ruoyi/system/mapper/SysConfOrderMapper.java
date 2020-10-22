@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.ruoyi.system.domain.SysConfOrder;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 会议室预约Mapper接口
@@ -21,6 +22,8 @@ public interface SysConfOrderMapper
      */
     public Map<String,Object> selectSysConfOrderById(Long confOrderId);
 
+
+
     /**
      * 查询会议室预约列表
      * 
@@ -28,6 +31,14 @@ public interface SysConfOrderMapper
      * @return 会议室预约集合
      */
     public List<Map<String,Object>> selectSysConfOrderList(SysConfOrder sysConfOrder);
+
+    /**
+     * 查询可预约列表
+     *
+     * @param
+     * @return 会议室预约集合
+     */
+    public List<Map<String,Object>> selectSysConfOrderByTime(@Param("startTime") String startTime, @Param("endTime")String endTime);
 
     /**
      * 新增会议室预约

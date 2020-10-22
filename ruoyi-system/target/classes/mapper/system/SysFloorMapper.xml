@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysFloorMapper">
+    
+    <resultMap type="SysFloor" id="SysFloorResult">
+        <result property="id"    column="id"    />
+        <result property="buildId"    column="build_id"    />
+        <result property="floorNum"    column="floor_num"    />
+    </resultMap>
+
+    <sql id="selectSysFloorVo">
+        select id, build_id, floor_num from sys_floor
+    </sql>
+
+    <select id="selectSysFloorList" parameterType="SysFloor" resultType="java.util.HashMap">
+        select f.id,b.build_num as buildId ,f.floor_num  as floorNum from sys_floor f ,sys_building b where f.build_id=b.id
+            <if test="buildId != null "> and f.build_id = #{buildId}</if>
+            <if test="floorNum != null  and floorNum != ''"> and f.floor_num = #{floorNum}</if>
+    </select>
+    
+    <select id="selectSysFloorById" parameterType="Long" resultMap="SysFloorResult">
+        <include refid="selectSysFloorVo"/>
+        where id = #{id}
+    </select>
+
+    <select id="selectSysFloor"  resultType="java.util.HashMap">
+       select  f.id as id, concat(b.build_num,f.floor_num) as floorNum from sys_floor f ,sys_building b  where f.build_id=b.id
+    </select>
+
+    <insert id="insertSysFloor" parameterType="SysFloor" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_floor
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="buildId != null">build_id,</if>
+            <if test="floorNum != null and floorNum != ''">floor_num,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="buildId != null">#{buildId},</if>
+            <if test="floorNum != null and floorNum != ''">#{floorNum},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysFloor" parameterType="SysFloor">
+        update sys_floor
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="buildId != null">build_id = #{buildId},</if>
+            <if test="floorNum != null and floorNum != ''">floor_num = #{floorNum},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSysFloorById" parameterType="Long">
+        delete from sys_floor where id = #{id}
+    </delete>
+
+    <delete id="deleteSysFloorByIds" parameterType="String">
+        delete from sys_floor where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

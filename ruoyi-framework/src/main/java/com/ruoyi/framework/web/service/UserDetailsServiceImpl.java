@@ -37,7 +37,8 @@ public class UserDetailsServiceImpl implements UserDetailsService
         if (StringUtils.isNull(user))
         {
             log.info("登录用户：{} 不存在.", username);
-            throw new UsernameNotFoundException("登录用户：" + username + " 不存在");
+            return new LoginUser();
+           // throw new UsernameNotFoundException("登录用户：" + username + " 不存在");
         }
         else if (UserStatus.DELETED.getCode().equals(user.getDelFlag()))
         {

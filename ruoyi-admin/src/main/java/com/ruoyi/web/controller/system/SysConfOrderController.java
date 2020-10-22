@@ -5,14 +5,7 @@ import java.util.Map;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
@@ -38,13 +31,20 @@ public class SysConfOrderController extends BaseController
     /**
      * 查询会议室预约列表
      */
-    @PreAuthorize("@ss.hasPermi('system:order:list')")
+    //@PreAuthorize("@ss.hasPermi('system:order:list')")
     @GetMapping("/list")
     public TableDataInfo list(SysConfOrder sysConfOrder)
     {
         startPage();
         List<Map<String,Object>> list = sysConfOrderService.selectSysConfOrderList(sysConfOrder);
         return getDataTable(list);
+    }
+
+    @GetMapping("/confRoomlist")
+    public AjaxResult confRomlist(@RequestParam(name="startTime",required = false) String startTime,@RequestParam(name = "endTime",required = false) String endTime)
+    {
+        List<Map<String,Object>> list = sysConfOrderService.selectSysConfOrderByTime(startTime,endTime);
+      return  AjaxResult.success(list);
     }
 
 //    /**
@@ -63,7 +63,7 @@ public class SysConfOrderController extends BaseController
     /**
      * 获取会议室预约详细信息
      */
-    @PreAuthorize("@ss.hasPermi('system:order:query')")
+
     @GetMapping(value = "/{confOrderId}")
     public AjaxResult getInfo(@PathVariable("confOrderId") Long confOrderId)
     {
@@ -73,7 +73,6 @@ public class SysConfOrderController extends BaseController
     /**
      * 新增会议室预约
      */
-    @PreAuthorize("@ss.hasPermi('system:order:add')")
     @Log(title = "会议室预约", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody SysConfOrder sysConfOrder)
@@ -84,7 +83,6 @@ public class SysConfOrderController extends BaseController
     /**
      * 修改会议室预约
      */
-    @PreAuthorize("@ss.hasPermi('system:order:edit')")
     @Log(title = "会议室预约", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody SysConfOrder sysConfOrder)
@@ -95,7 +93,6 @@ public class SysConfOrderController extends BaseController
     /**
      * 删除会议室预约
      */
-    @PreAuthorize("@ss.hasPermi('system:order:remove')")
     @Log(title = "会议室预约", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{confOrderIds}")
     public AjaxResult remove(@PathVariable Long[] confOrderIds)

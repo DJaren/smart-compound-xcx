@@ -21,6 +21,8 @@ public interface ISysConfOrderService
      */
     public Map<String,Object> selectSysConfOrderById(Long confOrderId);
 
+    public List<Map<String,Object>> selectSysConfOrderByTime(String startTime,String endTime);
+
     /**
      * 查询会议室预约列表
      * 

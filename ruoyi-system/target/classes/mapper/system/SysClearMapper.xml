@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysClearMapper">
+    
+    <resultMap type="SysClear" id="SysClearResult">
+        <result property="id"    column="id"    />
+        <result property="userId" column="user_id"/>
+        <result property="appointmentTime"    column="appointment_time"    />
+        <result property="buildroom"    column="buildroom"    />
+        <result property="remark"    column="remark"    />
+        <result property="status"    column="status"    />
+    </resultMap>
+
+    <sql id="selectSysClearVo">
+        select id, user_id,appointment_time, buildroom, remark ,status from sys_clear
+    </sql>
+
+    <select id="selectSysClearList" parameterType="SysClear" resultMap="SysClearResult">
+        <include refid="selectSysClearVo"/>
+        <where>
+            <if test="userId != null "> and user_id = #{userId}</if>
+            <if test="appointmentTime != null "> and appointment_time = #{appointmentTime}</if>
+            and  status=0
+        </where>
+    </select>
+    
+    <select id="selectSysClearById" parameterType="Integer" resultMap="SysClearResult">
+        <include refid="selectSysClearVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSysClear" parameterType="SysClear">
+        insert into sys_clear
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="appointmentTime != null">appointment_time,</if>
+            <if test="buildroom != null">buildroom,</if>
+            <if test="remark != null">remark,</if>
+            <if test="userId != null">user_id,</if>
+            status,
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="appointmentTime != null">#{appointmentTime},</if>
+            <if test="buildroom != null">#{buildroom},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="userId != null">#{userId},</if>
+            0,
+         </trim>
+    </insert>
+
+    <update id="updateSysClear" parameterType="SysClear">
+        update sys_clear
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="appointmentTime != null">appointment_time = #{appointmentTime},</if>
+            <if test="buildroom != null">buildroom = #{buildroom},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="status != null">status = #{status},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSysClearById" parameterType="Integer">
+       update  sys_clear set status=1  where id = #{id}
+    </delete>
+
+    <delete id="deleteSysClearByIds" parameterType="String">
+        delete from sys_clear where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

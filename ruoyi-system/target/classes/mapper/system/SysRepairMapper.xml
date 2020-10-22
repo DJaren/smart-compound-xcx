@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysRepairMapper">
+    
+    <resultMap type="SysRepair" id="SysRepairResult">
+        <result property="id"    column="id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="repairType"    column="repair_type"    />
+        <result property="repairTime"    column="repair_time"    />
+        <result property="addr"    column="addr"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectSysRepairVo">
+        select id, user_id,repair_type, repair_time, addr, remark from sys_repair
+    </sql>
+
+    <select id="selectSysRepairList" parameterType="SysRepair" resultMap="SysRepairResult">
+        <include refid="selectSysRepairVo"/>
+        <where>
+            <if test="userId != null "> and user_id = #{userId}</if>
+            and  status=0
+        </where>
+    </select>
+    
+    <select id="selectSysRepairById" parameterType="Long" resultMap="SysRepairResult">
+        <include refid="selectSysRepairVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSysRepair" parameterType="SysRepair" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_repair
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="repairType != null">repair_type,</if>
+            <if test="repairTime != null">repair_time,</if>
+            <if test="addr != null">addr,</if>
+            <if test="remark != null">remark,</if>
+            <if test="userId != null">user_id,</if>
+            status,
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="repairType != null">#{repairType},</if>
+            <if test="repairTime != null">#{repairTime},</if>
+            <if test="addr != null">#{addr},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="userId != null">#{userId},</if>
+            1,
+         </trim>
+    </insert>
+
+    <update id="updateSysRepair" parameterType="SysRepair">
+        update sys_repair
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="repairType != null">repair_type = #{repairType},</if>
+            <if test="repairTime != null">repair_time = #{repairTime},</if>
+            <if test="addr != null">addr = #{addr},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="status != null">status = #{status},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSysRepairById" parameterType="Long">
+        delete  sys_repair set status=1 where id = #{id}
+    </delete>
+
+    <delete id="deleteSysRepairByIds" parameterType="String">
+        delete from sys_repair where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

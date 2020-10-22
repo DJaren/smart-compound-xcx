@@ -28,15 +28,12 @@ public class SysConfOrder
     @Excel(name = "会议室ID，外键")
     private Long confId;
 
-    /** 创建时间 */
-    private String createTime;
-
     /** 预约开始时间 */
 
-    private String startTime;
+    private Long startTime;
 
     /** 预约结束时间 */
-    private String endTime;
+    private Long endTime;
 
     /** 会议主题 */
     @Excel(name = "会议主题")
@@ -74,27 +71,19 @@ public class SysConfOrder
         this.confId = confId;
     }
 
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getStartTime() {
+    public Long getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(Long startTime) {
         this.startTime = startTime;
     }
 
-    public String getEndTime() {
+    public Long getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(Long endTime) {
         this.endTime = endTime;
     }
 
